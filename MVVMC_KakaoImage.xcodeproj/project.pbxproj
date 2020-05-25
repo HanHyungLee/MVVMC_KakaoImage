@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A0B27E87DCFC92437F74B2 /* Pods_MVVMC_KakaoImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260DD5D31AC01937745267C0 /* Pods_MVVMC_KakaoImage.framework */; };
+		3B0555F67E5B202CE5679789 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8671FD2E08DCE5BA98102780 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework */; };
+		6560C740D9FBC3597D705298 /* Pods_MVVMC_KakaoImageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F7B0E5C676361E427DD565 /* Pods_MVVMC_KakaoImageTests.framework */; };
 		F1E1A600247C055400347D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A5FF247C055400347D82 /* AppDelegate.swift */; };
 		F1E1A602247C055400347D82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A601247C055400347D82 /* SceneDelegate.swift */; };
 		F1E1A607247C055400347D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E1A605247C055400347D82 /* Main.storyboard */; };
@@ -41,6 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10B5C888545A9081214423B5 /* Pods-MVVMC_KakaoImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImage.debug.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImage/Pods-MVVMC_KakaoImage.debug.xcconfig"; sourceTree = "<group>"; };
+		260DD5D31AC01937745267C0 /* Pods_MVVMC_KakaoImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_KakaoImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31F7B0E5C676361E427DD565 /* Pods_MVVMC_KakaoImageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_KakaoImageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3651971085C91F63691784CC /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.release.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.release.xcconfig"; sourceTree = "<group>"; };
+		48AA56EBDF2EFBF0BC0A1FBC /* Pods-MVVMC_KakaoImageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImageTests.release.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImageTests/Pods-MVVMC_KakaoImageTests.release.xcconfig"; sourceTree = "<group>"; };
+		7F42C65684F9B70853DD34CF /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8671FD2E08DCE5BA98102780 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFBFE0096BAD2713D674855D /* Pods-MVVMC_KakaoImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImage.release.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImage/Pods-MVVMC_KakaoImage.release.xcconfig"; sourceTree = "<group>"; };
 		F1E1A5FC247C055400347D82 /* MVVMC_KakaoImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMC_KakaoImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1A5FF247C055400347D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1A601247C055400347D82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +72,7 @@
 		F1E1A642247C0DB600347D82 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F1E1A644247C0DC200347D82 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		F1E1A647247C0FDB00347D82 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		F447E5C768A14C94A01941C8 /* Pods-MVVMC_KakaoImageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImageTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImageTests/Pods-MVVMC_KakaoImageTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A0B27E87DCFC92437F74B2 /* Pods_MVVMC_KakaoImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6560C740D9FBC3597D705298 /* Pods_MVVMC_KakaoImageTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +96,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0555F67E5B202CE5679789 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		085DCB4BE12F8CE33FE847F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				10B5C888545A9081214423B5 /* Pods-MVVMC_KakaoImage.debug.xcconfig */,
+				BFBFE0096BAD2713D674855D /* Pods-MVVMC_KakaoImage.release.xcconfig */,
+				7F42C65684F9B70853DD34CF /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig */,
+				3651971085C91F63691784CC /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.release.xcconfig */,
+				F447E5C768A14C94A01941C8 /* Pods-MVVMC_KakaoImageTests.debug.xcconfig */,
+				48AA56EBDF2EFBF0BC0A1FBC /* Pods-MVVMC_KakaoImageTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		990D46BA39FA3801B2E40FD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				260DD5D31AC01937745267C0 /* Pods_MVVMC_KakaoImage.framework */,
+				8671FD2E08DCE5BA98102780 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework */,
+				31F7B0E5C676361E427DD565 /* Pods_MVVMC_KakaoImageTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F1E1A5F3247C055400347D82 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +134,8 @@
 				F1E1A618247C055600347D82 /* MVVMC_KakaoImageTests */,
 				F1E1A623247C055600347D82 /* MVVMC_KakaoImageUITests */,
 				F1E1A5FD247C055400347D82 /* Products */,
+				085DCB4BE12F8CE33FE847F2 /* Pods */,
+				990D46BA39FA3801B2E40FD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,9 +282,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E1A629247C055600347D82 /* Build configuration list for PBXNativeTarget "MVVMC_KakaoImage" */;
 			buildPhases = (
+				F6CD958D6C9B276FF27F3C8F /* [CP] Check Pods Manifest.lock */,
 				F1E1A5F8247C055400347D82 /* Sources */,
 				F1E1A5F9247C055400347D82 /* Frameworks */,
 				F1E1A5FA247C055400347D82 /* Resources */,
+				F64F74F12A0ED082D78929EA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +301,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E1A62C247C055600347D82 /* Build configuration list for PBXNativeTarget "MVVMC_KakaoImageTests" */;
 			buildPhases = (
+				B61DBA6474EEDC9342DED485 /* [CP] Check Pods Manifest.lock */,
 				F1E1A611247C055600347D82 /* Sources */,
 				F1E1A612247C055600347D82 /* Frameworks */,
 				F1E1A613247C055600347D82 /* Resources */,
@@ -276,9 +320,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1E1A62F247C055600347D82 /* Build configuration list for PBXNativeTarget "MVVMC_KakaoImageUITests" */;
 			buildPhases = (
+				07B81BD623CD6EA863E427C7 /* [CP] Check Pods Manifest.lock */,
 				F1E1A61C247C055600347D82 /* Sources */,
 				F1E1A61D247C055600347D82 /* Frameworks */,
 				F1E1A61E247C055600347D82 /* Resources */,
+				4A440AEDDA74A1C02E893EB1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -359,6 +405,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07B81BD623CD6EA863E427C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A440AEDDA74A1C02E893EB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B61DBA6474EEDC9342DED485 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MVVMC_KakaoImageTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F64F74F12A0ED082D78929EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMC_KakaoImage/Pods-MVVMC_KakaoImage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMC_KakaoImage/Pods-MVVMC_KakaoImage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVMC_KakaoImage/Pods-MVVMC_KakaoImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6CD958D6C9B276FF27F3C8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MVVMC_KakaoImage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F1E1A5F8247C055400347D82 /* Sources */ = {
@@ -544,6 +693,7 @@
 		};
 		F1E1A62A247C055600347D82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10B5C888545A9081214423B5 /* Pods-MVVMC_KakaoImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -562,6 +712,7 @@
 		};
 		F1E1A62B247C055600347D82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFBFE0096BAD2713D674855D /* Pods-MVVMC_KakaoImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -580,6 +731,7 @@
 		};
 		F1E1A62D247C055600347D82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F447E5C768A14C94A01941C8 /* Pods-MVVMC_KakaoImageTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -602,6 +754,7 @@
 		};
 		F1E1A62E247C055600347D82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48AA56EBDF2EFBF0BC0A1FBC /* Pods-MVVMC_KakaoImageTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -624,6 +777,7 @@
 		};
 		F1E1A630247C055600347D82 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F42C65684F9B70853DD34CF /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -644,6 +798,7 @@
 		};
 		F1E1A631247C055600347D82 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3651971085C91F63691784CC /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
