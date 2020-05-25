@@ -8,19 +8,6 @@
 
 import Foundation
 
-//private var urlString: String {
-//    switch self {
-//    case .imageUrl:
-//        return "https://dapi.kakao.com/v2/search/image"
-//    @unknown default:
-//        return ""
-//    }
-//}
-//
-//private var httpAdditionalHeaders: [String: String] {
-//    return ["Authorization": "KakaoAK 5a831e9e500d0d4faf2e2ab1094caf45"]
-//}
-
 struct RootModel: Codable {
     let documents: [Document]
     let meta: Meta

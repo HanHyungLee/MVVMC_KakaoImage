@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,8 @@
 		F1E1A643247C0DB600347D82 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A642247C0DB600347D82 /* SearchViewModel.swift */; };
 		F1E1A645247C0DC200347D82 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A644247C0DC200347D82 /* SearchInteractor.swift */; };
 		F1E1A648247C0FDB00347D82 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A647247C0FDB00347D82 /* SearchModel.swift */; };
+		F1E1A64D247C1B3000347D82 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A64C247C1B3000347D82 /* API.swift */; };
+		F1E1A64E247C1B3400347D82 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A64C247C1B3000347D82 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		F1E1A642247C0DB600347D82 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F1E1A644247C0DC200347D82 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		F1E1A647247C0FDB00347D82 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		F1E1A64C247C1B3000347D82 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F447E5C768A14C94A01941C8 /* Pods-MVVMC_KakaoImageTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImageTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImageTests/Pods-MVVMC_KakaoImageTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +116,6 @@
 				F447E5C768A14C94A01941C8 /* Pods-MVVMC_KakaoImageTests.debug.xcconfig */,
 				48AA56EBDF2EFBF0BC0A1FBC /* Pods-MVVMC_KakaoImageTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,6 +156,7 @@
 			children = (
 				F1E1A636247C078400347D82 /* Search */,
 				F1E1A637247C079700347D82 /* Favorite */,
+				F1E1A64A247C1B1600347D82 /* Service */,
 				F1E1A5FF247C055400347D82 /* AppDelegate.swift */,
 				F1E1A601247C055400347D82 /* SceneDelegate.swift */,
 				F1E1A605247C055400347D82 /* Main.storyboard */,
@@ -273,6 +276,22 @@
 				F1E1A647247C0FDB00347D82 /* SearchModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F1E1A64A247C1B1600347D82 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1A64B247C1B2600347D82 /* API */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F1E1A64B247C1B2600347D82 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1A64C247C1B3000347D82 /* API.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,6 +537,7 @@
 				F1E1A643247C0DB600347D82 /* SearchViewModel.swift in Sources */,
 				F1E1A645247C0DC200347D82 /* SearchInteractor.swift in Sources */,
 				F1E1A648247C0FDB00347D82 /* SearchModel.swift in Sources */,
+				F1E1A64D247C1B3000347D82 /* API.swift in Sources */,
 				F1E1A63D247C089300347D82 /* SearchCoordinator.swift in Sources */,
 				F1E1A641247C0C0700347D82 /* SearchNavigationController.swift in Sources */,
 				F1E1A600247C055400347D82 /* AppDelegate.swift in Sources */,
@@ -530,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E1A64E247C1B3400347D82 /* API.swift in Sources */,
 				F1E1A61A247C055600347D82 /* MVVMC_KakaoImageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

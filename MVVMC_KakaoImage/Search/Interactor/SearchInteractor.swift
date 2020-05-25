@@ -7,15 +7,23 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol SearchInteractorProtocol {
-    init(text: String)
-    
     var rootModel: RootModel { get }
+    var didChange$: Observable<RootModel> { get }
     
     func fetchSearch(text: String, page: Int)
 }
 
 final class SearchInteractor: SearchInteractorProtocol {
+    
+    let rootModel: RootModel
+    let didChange$: Observable<RootModel>
+    
+    func fetchSearch(text: String, page: Int) {
+        API.imageUrl.fetchImageList(text: <#T##String#>, page: <#T##Int#>, completion: <#T##() -> (Result<RootModel, API.APIError>)#>)
+    }
+    
     
 }
