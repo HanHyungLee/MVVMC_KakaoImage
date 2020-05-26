@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+final class SearchViewModel {
+//    let searchInteractor: SearchInteractorProtocol
+//    let search
+}

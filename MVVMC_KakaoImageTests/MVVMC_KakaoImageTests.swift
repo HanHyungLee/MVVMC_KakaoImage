@@ -13,6 +13,19 @@ class MVVMC_KakaoImageTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        callAPI()
+    }
+    
+    func callAPI() {
+        API.imageUrl(text: "Apple", page: 1, sort: .accuracy, size: 10).fetchImageList(RootModel.self) { result in
+            switch result {
+            case .success(let model):
+                print("model = \(model)")
+            case .failure(let error):
+                print("error = \(error)")
+            }
+        }
     }
 
     override func tearDownWithError() throws {

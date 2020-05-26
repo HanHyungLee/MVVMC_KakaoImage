@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchCoordinatorProtocol: class {
-    func showSearchList()
+    func showSearchDetail()
 }
 
 final class SearchCoordinator: SearchCoordinatorProtocol {
@@ -20,8 +20,8 @@ final class SearchCoordinator: SearchCoordinatorProtocol {
         self.navigationController = navigationController
     }
     
-    func showSearchList() {
-        // show SearchList
+    func showSearchDetail() {
+        // show SearchDetail
     }
     
 }
