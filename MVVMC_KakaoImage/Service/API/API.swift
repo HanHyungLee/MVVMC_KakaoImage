@@ -8,6 +8,13 @@
 
 import Foundation
 
+let Default_Count: Int = 80
+
+protocol APIProviderProtocol {
+    associatedtype Model
+    func fetchImageList<Model: Codable>(_ type: Model.Type, completion: @escaping (Result<Model, API.APIError>) -> ())
+}
+
 extension API {
     enum APIError: Error {
         case invalidJSON
@@ -22,7 +29,9 @@ extension API {
     }
 }
 
-enum API {
+enum API: APIProviderProtocol {
+    typealias Model = RootModel
+    
     case imageUrl(text: String, page: Int, sort: APISort, size: Int)
     
     private var urlString: String {
@@ -94,7 +103,7 @@ enum API {
             }
             else {
                 if let data = data {
-                    if let rootModel: T = try? JSONDecoder().decode(T.self, from: data) {
+                    if let rootModel: T = try? JSONDecoder().decode(type, from: data) {
                         completion(.success(rootModel))
                     }
                     else {

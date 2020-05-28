@@ -12,15 +12,46 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var viewModel: SearchViewModel {
+        didSet {
+            updateUI()
+        }
+    }
     
     // MARK: - View lifecycle
+    
+    deinit {
+        
+    }
+    
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setupUI()
+        
+        // search
+        viewModel.fetchSearch(text: "apple", page: 1)
     }
     
+    // MARK: - Private Function
+    
+    private func setupUI() {
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+    }
+    
+    private func updateUI() {
+        self.collectionView.reloadData()
+    }
     
     /*
      // MARK: - Navigation
@@ -31,5 +62,20 @@ class SearchViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+}
+
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.viewModel.numberOfRows()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchItemCollectionViewCell", for: indexPath) as! SearchItemCollectionViewCell
+        return cell
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegate {
     
 }

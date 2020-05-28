@@ -9,6 +9,26 @@
 import Foundation
 
 final class SearchViewModel {
-//    let searchInteractor: SearchInteractorProtocol
-//    let search
+    private let searchInteractor: SearchInteractorProtocol
+    
+    private var rootModel: RootModel {
+        return self.searchInteractor.rootModel
+    }
+    
+    // MARK: - init
+    
+    init(searchInteractor: SearchInteractorProtocol) {
+        self.searchInteractor = searchInteractor
+    }
+    
+    
+    // MARK: - Public Function
+    
+    func fetchSearch(text: String, page: Int) {
+        self.searchInteractor.fetchSearch(text: text, page: page)
+    }
+    
+    func numberOfRows() -> Int {
+        return self.rootModel.documents.count
+    }
 }
