@@ -12,24 +12,36 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let rootModel = RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0))
+        let interactor = SearchInteractor(rootModel: rootModel, apiProvider: API.imageUrl(text: "", page: 0, sort: .accuracy, size: 0))
+        let searchViewModel = SearchViewModel(searchInteractor: interactor)
+        let scene = Scene.list(searchViewModel)
+        
+        
+        let coordinator = SceneCoordinator(window: self.window!)
+        coordinator.transition(to: scene, type: .root, animated: false)
+        
+        
         return true
     }
     
     // MARK: UISceneSession Lifecycle
     
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-    
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
+//    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+//        // Called when a new scene session is being created.
+//        // Use this method to select a configuration to create the new scene with.
+//        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+//    }
+//    
+//    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+//        // Called when the user discards a scene session.
+//        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+//        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+//    }
     
     // MARK: - Core Data stack
     

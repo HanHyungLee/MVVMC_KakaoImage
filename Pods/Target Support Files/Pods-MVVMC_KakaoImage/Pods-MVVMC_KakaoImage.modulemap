@@ -1,0 +1,6 @@
+framework module Pods_MVVMC_KakaoImage {
+  umbrella header "Pods-MVVMC_KakaoImage-umbrella.h"
+
+  export *
+  module * { export * }
+}

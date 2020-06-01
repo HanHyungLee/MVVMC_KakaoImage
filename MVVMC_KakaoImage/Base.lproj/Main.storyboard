@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Ah-nK-8Ua">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4k1-Sd-1YD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -85,12 +85,19 @@
                                     <outlet property="prefetchDataSource" destination="xbq-UN-P6Q" id="81r-0W-iID"/>
                                 </connections>
                             </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="K3v-8Z-ymZ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="K3v-8Z-ymZ" firstAttribute="trailing" secondItem="LLe-mZ-SWH" secondAttribute="trailing" id="1XQ-wO-yvG"/>
                             <constraint firstItem="LLe-mZ-SWH" firstAttribute="bottom" secondItem="2Ah-nK-8Ua" secondAttribute="bottom" id="7Oo-Yq-qXg"/>
                             <constraint firstItem="LLe-mZ-SWH" firstAttribute="trailing" secondItem="2Ah-nK-8Ua" secondAttribute="trailing" id="PaD-ik-Gsu"/>
-                            <constraint firstItem="2Ah-nK-8Ua" firstAttribute="top" secondItem="LLe-mZ-SWH" secondAttribute="top" id="caG-y7-OJW"/>
+                            <constraint firstItem="2Ah-nK-8Ua" firstAttribute="top" secondItem="K3v-8Z-ymZ" secondAttribute="bottom" id="f16-GA-DMR"/>
+                            <constraint firstItem="K3v-8Z-ymZ" firstAttribute="top" secondItem="LLe-mZ-SWH" secondAttribute="top" id="rXR-24-5oa"/>
+                            <constraint firstItem="K3v-8Z-ymZ" firstAttribute="leading" secondItem="LLe-mZ-SWH" secondAttribute="leading" id="vaC-Ay-gcd"/>
                             <constraint firstItem="2Ah-nK-8Ua" firstAttribute="leading" secondItem="LLe-mZ-SWH" secondAttribute="leading" id="wMl-r6-E0Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LLe-mZ-SWH"/>
@@ -107,7 +114,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="akO-Ys-QXj">
             <objects>
-                <tabBarController id="zjZ-D5-LDZ" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabV" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zjZ-D5-LDZ" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wib-Pm-fQq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

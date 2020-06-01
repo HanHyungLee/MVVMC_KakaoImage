@@ -8,15 +8,16 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, ViewModelBindableType {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var viewModel: SearchViewModel {
-        didSet {
-            updateUI()
-        }
-    }
+    var viewModel: SearchViewModel!
+//    {
+//        didSet {
+//            updateUI()
+//        }
+//    }
     
     // MARK: - View lifecycle
     
@@ -24,22 +25,17 @@ class SearchViewController: UIViewController {
         
     }
     
-    init(viewModel: SearchViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        
+    }
+    
+    func bindViewModel() {
         // search
         viewModel.fetchSearch(text: "apple", page: 1)
+        
+        
     }
     
     // MARK: - Private Function

@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 protocol SearchInteractorProtocol {
     var rootModel: RootModel { get }
