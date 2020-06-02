@@ -95,14 +95,15 @@ enum API: APIProviderProtocol {
         // Network
         let urlSession: URLSession = URLSession(configuration: configuration)
         urlSession.dataTask(with: url) { (data, response, error) in
-            print("data = \(String(describing: data))")
-            print("response = \(String(describing: response))")
-            print("error = \(String(describing: error))")
+//            print("response = \(String(describing: response))")
+//            print("error = \(String(describing: error))")
             if error != nil {
                 completion(.failure(.etc(localizedString: error?.localizedDescription ?? "")))
             }
             else {
                 if let data = data {
+                    let json: String = String(data: data, encoding: .utf8) ?? ""
+                    print("json = \(json)")
                     if let rootModel: T = try? JSONDecoder().decode(type, from: data) {
                         completion(.success(rootModel))
                     }

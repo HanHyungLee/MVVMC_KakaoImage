@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SceneCoordinator: SceneCoordinatorType {
+final class SceneCoordinator: SceneCoordinatorType {
     
     var window: UIWindow!
     var currentVC: UIViewController!

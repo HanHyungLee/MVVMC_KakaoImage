@@ -7,12 +7,25 @@
 //
 
 import Foundation
+import RxSwift
 
 final class SearchViewModel {
     private let searchInteractor: SearchInteractorProtocol
     
     private var rootModel: RootModel {
         return self.searchInteractor.rootModel
+    }
+    
+    var didChange$: BehaviorSubject<RootModel?> {
+        return self.searchInteractor.didChange$
+    }
+    
+    var documents: [Document] {
+        return self.searchInteractor.rootModel.documents
+    }
+    
+    var meta: Meta {
+        return self.searchInteractor.rootModel.meta
     }
     
     // MARK: - init
@@ -24,8 +37,8 @@ final class SearchViewModel {
     
     // MARK: - Public Function
     
-    func fetchSearch(text: String, page: Int) {
-        self.searchInteractor.fetchSearch(text: text, page: page)
+    func fetchSearch(text: String, page: Int, sort: API.APISort = .accuracy, size: Int = 80) {
+        self.searchInteractor.fetchSearch(text: text, page: page, sort: sort, size: size)
     }
     
     func numberOfRows() -> Int {

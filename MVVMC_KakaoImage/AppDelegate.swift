@@ -16,15 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // TODO: RootModel을 다른 식으로 주입할 수 있을까?
         let rootModel = RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0))
-        let interactor = SearchInteractor(rootModel: rootModel, apiProvider: API.imageUrl(text: "", page: 0, sort: .accuracy, size: 0))
+        let interactor = SearchInteractor(rootModel: rootModel)
         let searchViewModel = SearchViewModel(searchInteractor: interactor)
         let scene = Scene.list(searchViewModel)
         
-        
         let coordinator = SceneCoordinator(window: self.window!)
         coordinator.transition(to: scene, type: .root, animated: false)
-        
         
         return true
     }

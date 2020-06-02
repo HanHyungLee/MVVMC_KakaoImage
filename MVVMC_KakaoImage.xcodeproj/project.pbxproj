@@ -17,6 +17,7 @@
 		F184296B248401C800E13D93 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F184296A248401C800E13D93 /* ViewModelBindableType.swift */; };
 		F1DBC7BA248548B200190D2B /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */; };
 		F1DBC7BC24854A8200190D2B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBC7BB24854A8200190D2B /* SceneCoordinator.swift */; };
+		F1DE620C24869BFF00DF1621 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DE620B24869BFF00DF1621 /* ReusableView.swift */; };
 		F1E1A600247C055400347D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A5FF247C055400347D82 /* AppDelegate.swift */; };
 		F1E1A602247C055400347D82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1A601247C055400347D82 /* SceneDelegate.swift */; };
 		F1E1A607247C055400347D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E1A605247C055400347D82 /* Main.storyboard */; };
@@ -68,6 +69,7 @@
 		F184296A248401C800E13D93 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		F1DBC7BB24854A8200190D2B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		F1DE620B24869BFF00DF1621 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		F1E1A5FC247C055400347D82 /* MVVMC_KakaoImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMC_KakaoImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1A5FF247C055400347D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1A601247C055400347D82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F1DE620924869BCA00DF1621 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F1DE620A24869BE800DF1621 /* Util */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F1DE620A24869BE800DF1621 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F1DE620B24869BFF00DF1621 /* ReusableView.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		F1E1A5F3247C055400347D82 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +189,7 @@
 				F1E1A636247C078400347D82 /* Search */,
 				F1E1A637247C079700347D82 /* Favorite */,
 				F1E1A64A247C1B1600347D82 /* Service */,
+				F1DE620924869BCA00DF1621 /* Common */,
 				F1E1A5FF247C055400347D82 /* AppDelegate.swift */,
 				F1E1A601247C055400347D82 /* SceneDelegate.swift */,
 				F1E1A605247C055400347D82 /* Main.storyboard */,
@@ -222,11 +241,11 @@
 		F1E1A634247C076800347D82 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F184296A248401C800E13D93 /* ViewModelBindableType.swift */,
 				F1E1A640247C0C0700347D82 /* SearchNavigationController.swift */,
 				F1E1A63E247C0BED00347D82 /* SearchViewController.swift */,
 				F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */,
 				F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */,
-				F184296A248401C800E13D93 /* ViewModelBindableType.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -568,6 +587,7 @@
 				F1E1A641247C0C0700347D82 /* SearchNavigationController.swift in Sources */,
 				F184296B248401C800E13D93 /* ViewModelBindableType.swift in Sources */,
 				F1E1A600247C055400347D82 /* AppDelegate.swift in Sources */,
+				F1DE620C24869BFF00DF1621 /* ReusableView.swift in Sources */,
 				F1E1A602247C055400347D82 /* SceneDelegate.swift in Sources */,
 				F1E1A60A247C055400347D82 /* MVVMC_KakaoImage.xcdatamodeld in Sources */,
 				F109E07A2480031600EEA812 /* SearchCellViewModel.swift in Sources */,

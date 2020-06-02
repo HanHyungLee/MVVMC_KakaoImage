@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchNavigationController: UINavigationController {
+final class SearchNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

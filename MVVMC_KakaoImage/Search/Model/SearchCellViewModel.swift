@@ -17,3 +17,10 @@ struct SearchItemViewModel: SearchItemCellViewModelProtocol {
     var display_sitename: String
     var image_url: String
 }
+
+extension SearchItemViewModel {
+    init(document: Document) {
+        self.display_sitename = document.display_sitename
+        self.image_url = document.image_url
+    }
+}

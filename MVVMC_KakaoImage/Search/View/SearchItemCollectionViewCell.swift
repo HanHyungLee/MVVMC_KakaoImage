@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SearchItemCollectionViewCell: UICollectionViewCell {
+final class SearchItemCollectionViewCell: UICollectionViewCell, ReusableView {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,7 +20,6 @@ class SearchItemCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(_ searchItemCellViewModel: SearchItemCellViewModelProtocol) {
-        // TODO: 이미지 캐싱 다운
-        self.label.text = searchItemCellViewModel.display_sitename
+        self.titleLabel.text = searchItemCellViewModel.display_sitename
     }
 }

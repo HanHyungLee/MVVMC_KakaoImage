@@ -7,6 +7,7 @@ target 'MVVMC_KakaoImage' do
 
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Kingfisher'
 
   target 'MVVMC_KakaoImageTests' do
     inherit! :search_paths

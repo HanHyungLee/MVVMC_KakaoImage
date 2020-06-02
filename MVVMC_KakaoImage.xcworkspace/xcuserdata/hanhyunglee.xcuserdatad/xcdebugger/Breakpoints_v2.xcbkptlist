@@ -18,54 +18,6 @@
             endingLineNumber = "84"
             landmarkName = "fetchImageList(_:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F3CC52FE-4BE0-473A-9DF9-3937319436A9 - 3ba007370d382832"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVMC_KakaoImage.API.fetchImageList&lt;A where A: Swift.Decodable, A: Swift.Encodable&gt;(_: A.Type, completion: (Swift.Result&lt;A, MVVMC_KakaoImage.API.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "MVVMC_KakaoImage"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hanhyunglee/Documents/Project/MVVMC_KakaoImage/MVVMC_KakaoImage/Service/API/API.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "2290">
-               </Location>
-               <Location
-                  uuid = "F3CC52FE-4BE0-473A-9DF9-3937319436A9 - 2e51279db00c1376"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MVVMC_KakaoImageTests.API.fetchImageList&lt;A where A: Swift.Decodable, A: Swift.Encodable&gt;(_: A.Type, completion: (Swift.Result&lt;A, MVVMC_KakaoImageTests.API.APIError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "MVVMC_KakaoImageTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hanhyunglee/Documents/Project/MVVMC_KakaoImage/MVVMC_KakaoImage/Service/API/API.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "2290">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F2F6E2EE-455C-49C8-B456-C778E9A97A9D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MVVMC_KakaoImage/Search/Interactor/SearchInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "fetchSearch(text:page:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

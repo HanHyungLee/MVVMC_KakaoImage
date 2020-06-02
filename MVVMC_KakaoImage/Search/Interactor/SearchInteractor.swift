@@ -12,9 +12,9 @@ import RxCocoa
 
 protocol SearchInteractorProtocol {
     var rootModel: RootModel { get }
-    var didChange$: BehaviorSubject<RootModel> { get }
+    var didChange$: BehaviorSubject<RootModel?> { get }
     
-    func fetchSearch(text: String, page: Int)
+    func fetchSearch(text: String, page: Int, sort: API.APISort, size: Int)
 }
 
 final class SearchInteractor: SearchInteractorProtocol {
@@ -24,20 +24,20 @@ final class SearchInteractor: SearchInteractorProtocol {
             self.didChange$.onNext(rootModel)
         }
     }
-    var didChange$: BehaviorSubject<RootModel> = BehaviorSubject<RootModel>(value: RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0)))
+    var didChange$: BehaviorSubject<RootModel?> = BehaviorSubject<RootModel?>(value: nil)
     
-    private let apiProvider: API
+//    private let apiProvider: API
     
     
-    init(rootModel: RootModel, apiProvider: API) {
+    init(rootModel: RootModel/*, apiProvider: API*/) {
         self.rootModel = rootModel
-        self.apiProvider = apiProvider
+//        self.apiProvider = apiProvider
     }
     
     // MARK: - API
     
-    func fetchSearch(text: String, page: Int) {
-        apiProvider/*.imageUrl(text: text, page: page, sort: .accuracy, size: 80)*/.fetchImageList(RootModel.self) { [weak self] result in
+    func fetchSearch(text: String, page: Int, sort: API.APISort = .accuracy, size: Int = 80) {
+        API.imageUrl(text: text, page: page, sort: sort, size: size).fetchImageList(RootModel.self) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let model):
