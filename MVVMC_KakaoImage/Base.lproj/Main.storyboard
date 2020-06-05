@@ -61,8 +61,6 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="xbq-UN-P6Q" id="lm1-KS-Dpr"/>
-                                    <outlet property="delegate" destination="xbq-UN-P6Q" id="cXg-VT-i3G"/>
                                     <outlet property="prefetchDataSource" destination="xbq-UN-P6Q" id="81r-0W-iID"/>
                                 </connections>
                             </collectionView>

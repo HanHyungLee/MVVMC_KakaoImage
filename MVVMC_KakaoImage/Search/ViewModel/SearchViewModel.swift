@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class SearchViewModel {
     private let searchInteractor: SearchInteractorProtocol
@@ -16,12 +17,8 @@ final class SearchViewModel {
         return self.searchInteractor.rootModel
     }
     
-    var didChange$: BehaviorSubject<RootModel?> {
-        return self.searchInteractor.didChange$
-    }
-    
-    var documents: [Document] {
-        return self.searchInteractor.rootModel.documents
+    var didChange$: Driver<[Document]> {
+        return self.searchInteractor.didChange$.asDriver(onErrorJustReturn: [])
     }
     
     var meta: Meta {

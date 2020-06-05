@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol SearchInteractorProtocol {
     var rootModel: RootModel { get }
-    var didChange$: BehaviorSubject<RootModel?> { get }
+    var didChange$: PublishSubject<[Document]> { get }
     
     func fetchSearch(text: String, page: Int, sort: API.APISort, size: Int)
 }
@@ -21,17 +21,17 @@ final class SearchInteractor: SearchInteractorProtocol {
     
     private(set) var rootModel: RootModel {
         didSet {
-            self.didChange$.onNext(rootModel)
+            self.didChange$.onNext(rootModel.documents)
         }
     }
-    var didChange$: BehaviorSubject<RootModel?> = BehaviorSubject<RootModel?>(value: nil)
+    var didChange$: PublishSubject<[Document]> = .init()
     
 //    private let apiProvider: API
     
     
-    init(rootModel: RootModel/*, apiProvider: API*/) {
+    init(rootModel: RootModel) {
         self.rootModel = rootModel
-//        self.apiProvider = apiProvider
+        self.didChange$.onNext(rootModel.documents)
     }
     
     // MARK: - API

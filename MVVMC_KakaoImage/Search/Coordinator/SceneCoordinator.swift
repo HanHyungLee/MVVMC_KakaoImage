@@ -27,6 +27,15 @@ final class SceneCoordinator: SceneCoordinatorType {
             self.window.rootViewController = target
             self.window.makeKeyAndVisible()
             self.currentVC = target
+        case .push:
+            let nav = self.currentVC.navigationController!
+            nav.pushViewController(target, animated: animated)
+            self.currentVC = target
+        case .modal:
+            self.currentVC.present(target, animated: animated) {
+//                self.currentVC = target
+            }
+            self.currentVC = target
         default:
             break
         }

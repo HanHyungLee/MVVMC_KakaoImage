@@ -145,6 +145,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F133F0BB2487A56C0075A150 /* CoreDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1A608247C055400347D82 /* MVVMC_KakaoImage.xcdatamodeld */,
+			);
+			path = CoreDataStorage;
+			sourceTree = "<group>";
+		};
 		F1DE620924869BCA00DF1621 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +204,6 @@
 				F1E1A60B247C055600347D82 /* Assets.xcassets */,
 				F1E1A60D247C055600347D82 /* LaunchScreen.storyboard */,
 				F1E1A610247C055600347D82 /* Info.plist */,
-				F1E1A608247C055400347D82 /* MVVMC_KakaoImage.xcdatamodeld */,
 			);
 			path = MVVMC_KakaoImage;
 			sourceTree = "<group>";
@@ -321,6 +328,7 @@
 		F1E1A64A247C1B1600347D82 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F133F0BB2487A56C0075A150 /* CoreDataStorage */,
 				F1E1A64B247C1B2600347D82 /* API */,
 			);
 			path = Service;

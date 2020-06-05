@@ -38,14 +38,30 @@ final class SearchViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        
         viewModel.didChange$
-            .share()
-            .subscribe(onNext: { [weak self] model in
-                DispatchQueue.main.async {
-                    self?.collectionView.reloadData()
-                }
-            })
-            .disposed(by: disposeBag)
+            .drive(self.collectionView.rx.items) { collectionView, index, document -> SearchItemCollectionViewCell in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! SearchItemCollectionViewCell
+            let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
+            cell.configure(cellViewModel)
+            cell.imageView.kf.setImage(with: URL(string: document.image_url))
+            return cell
+        }.disposed(by: disposeBag)
+        
+//        viewModel.didChange$.drive(self.collectionView.rx.items(cellIdentifier: SearchItemCollectionViewCell.reuseIdentifier, cellType: SearchItemCollectionViewCell.self)) { index, document, cell -> Void in
+//            let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
+//            cell.configure(cellViewModel)
+//            cell.imageView.kf.setImage(with: URL(string: document.image_url))
+//        }
+        
+//        viewModel.didChange$
+//            .share()
+//            .subscribe(onNext: { [weak self] model in
+//                DispatchQueue.main.async {
+//                    self?.collectionView.reloadData()
+//                }
+//            })
+//            .disposed(by: disposeBag)
     }
     
     // MARK: - Private Function
@@ -54,7 +70,7 @@ final class SearchViewController: UIViewController, ViewModelBindableType {
         self.navigationItem.title = "검색"
         
         self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+//        self.collectionView.dataSource = self
         
         self.collectionView.register(UINib(nibName: SearchItemCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier)
         
@@ -93,20 +109,20 @@ final class SearchViewController: UIViewController, ViewModelBindableType {
     
 }
 
-extension SearchViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numberOfRows()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
-        let document = self.viewModel.documents[indexPath.row]
-        let cellViewModel = SearchItemViewModel(document: document)
-        cell.configure(cellViewModel)
-        cell.imageView.kf.setImage(with: URL(string: document.image_url))
-        return cell
-    }
-}
+//extension SearchViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return self.viewModel.numberOfRows()
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
+//        let document = self.viewModel.documents[indexPath.row]
+//        let cellViewModel = SearchItemViewModel(document: document)
+//        cell.configure(cellViewModel)
+//        cell.imageView.kf.setImage(with: URL(string: document.image_url))
+//        return cell
+//    }
+//}
 
 extension SearchViewController: UICollectionViewDelegate {
     
