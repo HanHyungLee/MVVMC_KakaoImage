@@ -10,12 +10,27 @@ import UIKit
 
 final class SceneCoordinator: SceneCoordinatorType {
     
-    var window: UIWindow!
+    var window: UIWindow
     var currentVC: UIViewController!
     
     init(window: UIWindow) {
         self.window = window
         self.currentVC = window.rootViewController!
+    }
+    
+    func setTabVC(scenes: [Scene]) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabV = storyboard.instantiateViewController(withIdentifier: "MainTabV") as! UITabBarController
+        
+        let viewControllers: [UIViewController] = scenes.compactMap {
+            return $0.instantiate().navigationController
+        }
+        
+        mainTabV.setViewControllers(viewControllers, animated: false)
+        mainTabV.selectedIndex = 0
+        
+        window.rootViewController = mainTabV
+        window.makeKeyAndVisible()
     }
     
     func transition(to scene: Scene, type: TransitionType, animated: Bool) {
@@ -24,18 +39,18 @@ final class SceneCoordinator: SceneCoordinatorType {
         
         switch type {
         case .root:
-            self.window.rootViewController = target
-            self.window.makeKeyAndVisible()
-            self.currentVC = target
+            window.rootViewController = target
+            window.makeKeyAndVisible()
+            currentVC = target
         case .push:
-            let nav = self.currentVC.navigationController!
+            let nav = currentVC.navigationController!
             nav.pushViewController(target, animated: animated)
-            self.currentVC = target
+            currentVC = target
         case .modal:
-            self.currentVC.present(target, animated: animated) {
+            currentVC.present(target, animated: animated) {
 //                self.currentVC = target
             }
-            self.currentVC = target
+            currentVC = target
         default:
             break
         }

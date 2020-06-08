@@ -22,11 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: RootModel을 다른 식으로 주입할 수 있을까?
         let rootModel = RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0))
         let interactor = SearchInteractor(rootModel: rootModel)
-        let searchViewModel = SearchViewModel(searchInteractor: interactor)
-        let scene = Scene.list(searchViewModel)
+        let coreDataInteractor = CoreDataInteractor()
+        let searchViewModel = SearchViewModel(searchInteractor: interactor, coreDataInteractor: coreDataInteractor)
+        let searchScene = Scene.list(searchViewModel)
         
-        let coordinator = SceneCoordinator(window: self.window!)
-        coordinator.transition(to: scene, type: .root, animated: false)
+        let favoriteViewModel = FavoriteViewModel(coreDataInteractor: coreDataInteractor)
+        let favoriteScene = Scene.favorite(favoriteViewModel)
+        
+        let coordinator = SceneCoordinator(window: window!)
+//        coordinator.transition(to: scene, type: .root, animated: false)
+        
+        coordinator.setTabVC(scenes: [searchScene, favoriteScene])
         
         return true
     }

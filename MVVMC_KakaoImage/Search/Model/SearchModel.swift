@@ -15,13 +15,15 @@ struct RootModel: Codable {
 
 struct Document: Codable, Equatable {
     let collection: String
-//    let datetime: Date
     let display_sitename: String
     let doc_url: String
     let height: Int
     let image_url: String
     let thumbnail_url: String
     let width: Int
+    
+    // coreData 용
+    lazy var favorite: Bool = false
     
     static func ==(lhs: Document, rhs: Document) -> Bool {
         return lhs.collection == rhs.collection &&

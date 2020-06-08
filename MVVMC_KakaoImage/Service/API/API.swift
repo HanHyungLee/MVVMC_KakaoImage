@@ -97,23 +97,29 @@ enum API: APIProviderProtocol {
         urlSession.dataTask(with: url) { (data, response, error) in
 //            print("response = \(String(describing: response))")
 //            print("error = \(String(describing: error))")
-            if error != nil {
+            guard error == nil else {
                 completion(.failure(.etc(localizedString: error?.localizedDescription ?? "")))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                200..<300 ~= httpResponse.statusCode else {
+                    completion(.failure(.etc(localizedString: response.debugDescription)))
+                    return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            let json: String = String(data: data, encoding: .utf8) ?? ""
+            print("json = \(json)")
+            if let rootModel: T = try? JSONDecoder().decode(type, from: data) {
+                completion(.success(rootModel))
             }
             else {
-                if let data = data {
-                    let json: String = String(data: data, encoding: .utf8) ?? ""
-                    print("json = \(json)")
-                    if let rootModel: T = try? JSONDecoder().decode(type, from: data) {
-                        completion(.success(rootModel))
-                    }
-                    else {
-                        completion(.failure(.invalidJSON))
-                    }
-                }
-                else {
-                    completion(.failure(.noData))
-                }
+                completion(.failure(.invalidJSON))
             }
         }.resume()
     }

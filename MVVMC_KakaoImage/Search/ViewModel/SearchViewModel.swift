@@ -12,6 +12,7 @@ import RxCocoa
 
 final class SearchViewModel {
     private let searchInteractor: SearchInteractorProtocol
+    private let coreDataInteractor: CoreDataInteractorProtocol
     
     private var rootModel: RootModel {
         return self.searchInteractor.rootModel
@@ -27,8 +28,9 @@ final class SearchViewModel {
     
     // MARK: - init
     
-    init(searchInteractor: SearchInteractorProtocol) {
+    init(searchInteractor: SearchInteractorProtocol, coreDataInteractor: CoreDataInteractorProtocol) {
         self.searchInteractor = searchInteractor
+        self.coreDataInteractor = coreDataInteractor
     }
     
     
@@ -45,6 +47,6 @@ final class SearchViewModel {
     func saveSearch(indexPath: IndexPath) {
         let row: Int = indexPath.row
         let document: Document = self.rootModel.documents[row]
-        self.searchInteractor.saveSearch(document: document)
+        self.coreDataInteractor.saveSearch(document: document)
     }
 }

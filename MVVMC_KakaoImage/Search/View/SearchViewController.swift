@@ -11,17 +11,11 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-final class SearchViewController: UIViewController, ViewModelBindableType {
+final class SearchViewController: BaseViewController, ViewModelBindableType {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionView: UICollectionView!
     
     var viewModel: SearchViewModel!
-//    {
-//        didSet {
-//            updateUI()
-//        }
-//    }
     
     let disposeBag: DisposeBag = DisposeBag()
     
@@ -40,28 +34,15 @@ final class SearchViewController: UIViewController, ViewModelBindableType {
     func bindViewModel() {
         
         viewModel.didChange$
-            .drive(self.collectionView.rx.items) { collectionView, index, document -> SearchItemCollectionViewCell in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: IndexPath(item: index, section: 0)) as! SearchItemCollectionViewCell
-            let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
-            cell.configure(cellViewModel)
-            cell.imageView.kf.setImage(with: URL(string: document.image_url))
-            return cell
+            .drive(self.collectionView.rx.items) { collectionView, row, document -> SearchItemCollectionViewCell in
+                // cell
+                let indexPath: IndexPath = IndexPath(row: row, section: 0)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
+                let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
+                cell.configure(cellViewModel)
+                cell.imageView.kf.setImage(with: URL(string: document.image_url))
+                return cell
         }.disposed(by: disposeBag)
-        
-//        viewModel.didChange$.drive(self.collectionView.rx.items(cellIdentifier: SearchItemCollectionViewCell.reuseIdentifier, cellType: SearchItemCollectionViewCell.self)) { index, document, cell -> Void in
-//            let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
-//            cell.configure(cellViewModel)
-//            cell.imageView.kf.setImage(with: URL(string: document.image_url))
-//        }
-        
-//        viewModel.didChange$
-//            .share()
-//            .subscribe(onNext: { [weak self] model in
-//                DispatchQueue.main.async {
-//                    self?.collectionView.reloadData()
-//                }
-//            })
-//            .disposed(by: disposeBag)
     }
     
     // MARK: - Private Function
@@ -70,22 +51,8 @@ final class SearchViewController: UIViewController, ViewModelBindableType {
         self.navigationItem.title = "검색"
         
         self.collectionView.delegate = self
-//        self.collectionView.dataSource = self
-        
-        self.collectionView.register(UINib(nibName: SearchItemCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier)
-        
-        let spacing: CGFloat = 5.0
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: self.view.bounds.width / 2 - spacing * 3, height: 180.0)
-        layout.sectionInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-//        layout.minimumLineSpacing = 5.0
-//        layout.minimumInteritemSpacing = 5.0
-        self.collectionView.setCollectionViewLayout(layout, animated: false)
         
         self.searchBar.delegate = self
-        
         self.searchBar.showsCancelButton = true
         self.searchBar.autocapitalizationType = .none
         self.searchBar.keyboardType = .default

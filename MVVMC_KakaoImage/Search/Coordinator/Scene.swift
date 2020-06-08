@@ -8,9 +8,13 @@
 
 import UIKit
 
+enum Tab {
+    case scenes([Scene])
+}
+
 enum Scene {
     case list(SearchViewModel)
-    case favorite
+    case favorite(FavoriteViewModel)
 }
 
 extension Scene {
@@ -19,15 +23,19 @@ extension Scene {
         
         switch self {
         case .list(let viewModel):
-            let mainTabV = storyboard.instantiateViewController(withIdentifier: "MainTabV") as! UITabBarController
-            let nav = mainTabV.viewControllers?.first as! UINavigationController
+            let nav = storyboard.instantiateViewController(withIdentifier: "SearchNav") as! UINavigationController
             var vc = nav.viewControllers.first as! SearchViewController
             
             vc.bind(viewModel: viewModel)
             
-            return mainTabV
-        case .favorite:
-            fatalError()
+            return vc
+        case .favorite(let viewModel):
+            let nav = storyboard.instantiateViewController(withIdentifier: "FavoriteNav") as! UINavigationController
+            var vc = nav.viewControllers.first as! FavoriteViewController
+            
+            vc.bind(viewModel: viewModel)
+            
+            return vc
         }
     }
 }
