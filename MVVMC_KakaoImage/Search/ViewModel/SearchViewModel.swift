@@ -21,9 +21,9 @@ final class SearchViewModel {
         return self.searchInteractor.didChange$.asDriver(onErrorJustReturn: [])
     }
     
-    var meta: Meta {
+    lazy var meta: Meta = {
         return self.searchInteractor.rootModel.meta
-    }
+    }()
     
     // MARK: - init
     
@@ -40,5 +40,11 @@ final class SearchViewModel {
     
     func numberOfRows() -> Int {
         return self.rootModel.documents.count
+    }
+    
+    func saveSearch(indexPath: IndexPath) {
+        let row: Int = indexPath.row
+        let document: Document = self.rootModel.documents[row]
+        self.searchInteractor.saveSearch(document: document)
     }
 }

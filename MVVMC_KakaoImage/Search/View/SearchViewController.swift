@@ -125,7 +125,9 @@ final class SearchViewController: UIViewController, ViewModelBindableType {
 //}
 
 extension SearchViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.saveSearch(indexPath: indexPath)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {

@@ -13,6 +13,8 @@
 		F109E07A2480031600EEA812 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109E0792480031600EEA812 /* SearchCellViewModel.swift */; };
 		F109E07D248003DF00EEA812 /* SearchItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */; };
 		F109E07E248003DF00EEA812 /* SearchItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */; };
+		F1668E3C248E3336005AD75D /* SearchCoreDataModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1668E3A248E3336005AD75D /* SearchCoreDataModel+CoreDataClass.swift */; };
+		F1668E3D248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1668E3B248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift */; };
 		F18429692483FF9900E13D93 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18429682483FF9900E13D93 /* Scene.swift */; };
 		F184296B248401C800E13D93 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F184296A248401C800E13D93 /* ViewModelBindableType.swift */; };
 		F1DBC7BA248548B200190D2B /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */; };
@@ -65,6 +67,8 @@
 		F109E0792480031600EEA812 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
 		F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1668E3A248E3336005AD75D /* SearchCoreDataModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCoreDataModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F1668E3B248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCoreDataModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F18429682483FF9900E13D93 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		F184296A248401C800E13D93 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 		F133F0BB2487A56C0075A150 /* CoreDataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				F1668E3A248E3336005AD75D /* SearchCoreDataModel+CoreDataClass.swift */,
+				F1668E3B248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift */,
 				F1E1A608247C055400347D82 /* MVVMC_KakaoImage.xcdatamodeld */,
 			);
 			path = CoreDataStorage;
@@ -582,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1668E3C248E3336005AD75D /* SearchCoreDataModel+CoreDataClass.swift in Sources */,
 				F109E07D248003DF00EEA812 /* SearchItemCollectionViewCell.swift in Sources */,
 				F1E1A63F247C0BED00347D82 /* SearchViewController.swift in Sources */,
 				F1DBC7BA248548B200190D2B /* SceneCoordinatorType.swift in Sources */,
@@ -597,6 +604,7 @@
 				F1E1A600247C055400347D82 /* AppDelegate.swift in Sources */,
 				F1DE620C24869BFF00DF1621 /* ReusableView.swift in Sources */,
 				F1E1A602247C055400347D82 /* SceneDelegate.swift in Sources */,
+				F1668E3D248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift in Sources */,
 				F1E1A60A247C055400347D82 /* MVVMC_KakaoImage.xcdatamodeld in Sources */,
 				F109E07A2480031600EEA812 /* SearchCellViewModel.swift in Sources */,
 			);

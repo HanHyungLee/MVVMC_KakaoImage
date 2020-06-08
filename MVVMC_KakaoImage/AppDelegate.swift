@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // TODO: 데이터 모두 삭제
+//        deleteAllContext()
+        
         // TODO: RootModel을 다른 식으로 주입할 수 있을까?
         let rootModel = RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0))
         let interactor = SearchInteractor(rootModel: rootModel)
@@ -87,5 +90,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    private func deleteAllContext() {
+        let context = persistentContainer.viewContext
+        
+        do {
+            let searchModels = try context.fetch(SearchCoreDataModel.fetchRequest()) as! [SearchCoreDataModel]
+            searchModels.forEach {
+                context.delete($0)
+            }
+            saveContext()
+        } catch {
+            print("error.localizedDescription = \(error.localizedDescription)")
+        }
+    }
 }
 
