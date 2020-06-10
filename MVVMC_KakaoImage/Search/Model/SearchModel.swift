@@ -23,7 +23,7 @@ struct Document: Codable, Equatable {
     let width: Int
     
     // coreData 용
-    lazy var favorite: Bool = false
+//    private(set) lazy var isFavorite: Bool = false
     
     static func ==(lhs: Document, rhs: Document) -> Bool {
         return lhs.collection == rhs.collection &&
@@ -31,6 +31,10 @@ struct Document: Codable, Equatable {
             lhs.thumbnail_url == rhs.thumbnail_url &&
             lhs.display_sitename == rhs.display_sitename
     }
+    
+//    mutating func setFavorite(_ isFavorite: Bool) {
+//        self.isFavorite = isFavorite
+//    }
 }
 
 struct Meta: Codable {

@@ -9,18 +9,21 @@
 import Foundation
 
 protocol SearchItemCellViewModelProtocol {
-    var display_sitename: String { get set }
-    var image_url: String { get set }
+    var display_sitename: String { get }
+    var image_url: String { get }
+    var isFavorite: Bool { get set }
 }
 
 struct SearchItemViewModel: SearchItemCellViewModelProtocol {
-    var display_sitename: String
-    var image_url: String
+    let display_sitename: String
+    let image_url: String
+    var isFavorite: Bool
 }
 
 extension SearchItemViewModel {
-    init(document: Document) {
+    init(document: Document, isFavorite: Bool) {
         self.display_sitename = document.display_sitename
         self.image_url = document.image_url
+        self.isFavorite = isFavorite
     }
 }

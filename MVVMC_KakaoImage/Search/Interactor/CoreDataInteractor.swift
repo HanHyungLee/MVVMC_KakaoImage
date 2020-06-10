@@ -16,15 +16,17 @@ protocol CoreDataInteractorProtocol {
     
     func saveSearch(document: Document)
     func fetchCoreData()
+    func isFavorite(document: Document) -> Bool
 }
 
 final class CoreDataInteractor: CoreDataInteractorProtocol {
+    
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var didChangeCoreData$: PublishSubject<[SearchCoreDataModel]> = PublishSubject<[SearchCoreDataModel]>()
     
     func saveSearch(document: Document) {
         // core data
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         let format: String = """
@@ -76,7 +78,6 @@ final class CoreDataInteractor: CoreDataInteractorProtocol {
     }
     
     func fetchCoreData() {
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         do {
@@ -91,6 +92,33 @@ final class CoreDataInteractor: CoreDataInteractorProtocol {
             // TODO: error handling
             print("error.localizedDescription = \(error.localizedDescription)")
             didChangeCoreData$.onNext([])
+        }
+    }
+    
+    func isFavorite(document: Document) -> Bool {
+        let context = appDelegate.persistentContainer.viewContext
+        
+        
+        let format: String = """
+            collection == %@ &&
+            display_sitename == %@ &&
+            thumbnail_url == %@ &&
+            image_url == %@
+            """
+        
+        let predicate = NSPredicate(format: format,
+                                    document.collection,
+                                    document.display_sitename,
+                                    document.thumbnail_url,
+                                    document.image_url)
+        let fetchRequest = NSFetchRequest<SearchCoreDataModel>(entityName: "SearchCoreDataModel")
+        fetchRequest.predicate = predicate
+        
+        do {
+            let result = try context.fetch(fetchRequest)
+            return result.count > 0
+        } catch {
+            return false
         }
     }
 }

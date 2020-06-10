@@ -14,12 +14,27 @@ final class SearchItemCollectionViewCell: UICollectionViewCell, ReusableView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
+    
+    // MARK: - View lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setupUI()
     }
     
-    func configure(_ searchItemCellViewModel: SearchItemCellViewModelProtocol) {
-        self.titleLabel.text = searchItemCellViewModel.display_sitename
+    // MARK: - Private Function
+    
+    private func setupUI() {
+        imageView.image = nil
+        titleLabel.text = nil
+        likeButton.isSelected = false
+    }
+    
+    // MARK: - Public Function
+    
+    func configure(_ cellViewModel: SearchItemCellViewModelProtocol) {
+        titleLabel.text = cellViewModel.display_sitename
+        likeButton.isSelected = cellViewModel.isFavorite
     }
 }

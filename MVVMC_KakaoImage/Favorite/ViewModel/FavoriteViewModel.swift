@@ -13,14 +13,31 @@ import RxCocoa
 final class FavoriteViewModel {
     let coreDataInteractor: CoreDataInteractorProtocol
     
-    var didChange$: Driver<[SearchCoreDataModel]> {
-        return coreDataInteractor.didChangeCoreData$.asDriver(onErrorJustReturn: [])
-    }
+    let dataSource$: Driver<[SearchItemViewModel]>
+    
+//    private var didChange$: PublishSubject<[SearchCoreDataModel]> {
+//        return coreDataInteractor.didChangeCoreData$
+//    }
     
     // MARK: - init
     
     init(coreDataInteractor: CoreDataInteractorProtocol) {
         self.coreDataInteractor = coreDataInteractor
+        
+        let dataSource$ = coreDataInteractor.didChangeCoreData$
+            .map({ models -> [SearchItemViewModel] in
+               let searchItemViewModels: [SearchItemViewModel] = models.map { model -> SearchItemViewModel in
+                    let display_sitename: String = model.display_sitename ?? ""
+                    let image_url: String = model.image_url ?? ""
+                    let searchItemViewModel: SearchItemViewModel = SearchItemViewModel(display_sitename: display_sitename, image_url: image_url, isFavorite: true)
+                    return searchItemViewModel
+                }
+                return searchItemViewModels
+            })
+            .share()
+            .asDriver(onErrorJustReturn: [])
+        
+        self.dataSource$ = dataSource$
     }
     
     

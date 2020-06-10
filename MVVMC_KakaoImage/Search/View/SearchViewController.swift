@@ -33,14 +33,14 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     
     func bindViewModel() {
         
-        viewModel.didChange$
-            .drive(self.collectionView.rx.items) { collectionView, row, document -> SearchItemCollectionViewCell in
+        viewModel.dataSource$
+            .drive(self.collectionView.rx.items) { collectionView, row, cellViewModel -> SearchItemCollectionViewCell in
                 // cell
                 let indexPath: IndexPath = IndexPath(row: row, section: 0)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
-                let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
+//                let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
                 cell.configure(cellViewModel)
-                cell.imageView.kf.setImage(with: URL(string: document.image_url))
+                cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
                 return cell
         }.disposed(by: disposeBag)
     }

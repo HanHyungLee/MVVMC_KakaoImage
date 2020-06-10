@@ -34,6 +34,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                         <state key="normal" image="star" catalog="system"/>
+                        <state key="selected" image="star.fill" catalog="system"/>
                     </button>
                 </subviews>
             </view>
@@ -60,5 +61,6 @@
     </objects>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
     </resources>
 </document>

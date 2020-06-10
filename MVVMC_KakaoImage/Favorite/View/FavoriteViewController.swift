@@ -38,16 +38,12 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
-        self.viewModel.didChange$
-            .drive(self.collectionView.rx.items) { collectionView, row, model in
+        self.viewModel.dataSource$
+            .drive(self.collectionView.rx.items) { collectionView, row, cellViewModel in
                 let indexPath: IndexPath = IndexPath(row: row, section: 0)
                 let cell: SearchItemCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
-                
-                let display_sitename: String = model.display_sitename ?? ""
-                let image_url: String = model.image_url ?? ""
-                let cellViewModel: SearchItemViewModel = .init(display_sitename: display_sitename, image_url: image_url)
                 cell.configure(cellViewModel)
-                cell.imageView.kf.setImage(with: URL(string: image_url))
+                cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
                 
                 return cell
         }.disposed(by: disposeBag)
