@@ -48,7 +48,7 @@ final class SearchInteractor: SearchInteractorProtocol {
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                print("model = \(model)")
+//                print("model = \(model)")
                 self.rootModel = model
             case .failure(let error):
                 print("error = \(error)")

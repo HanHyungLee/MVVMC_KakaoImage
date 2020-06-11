@@ -54,7 +54,12 @@ final class SearchViewModel {
                     return SearchItemViewModel(document: document, isFavorite: isFavorite)
                 }
                 
-                self.newData$.onNext(cellViewModels)
+                if self.totalData$.value.count == 0 {
+                    self.totalData$.accept(cellViewModels)
+                }
+                else {
+                    self.newData$.onNext(cellViewModels)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -74,5 +79,9 @@ final class SearchViewModel {
         let row: Int = indexPath.row
         let document: Document = rootModel.documents[row]
         coreDataInteractor.saveSearch(document: document)
+    }
+    
+    func clear() {
+        
     }
 }

@@ -14,8 +14,8 @@
             filePath = "MVVMC_KakaoImage/Service/API/API.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "fetchImageList(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>

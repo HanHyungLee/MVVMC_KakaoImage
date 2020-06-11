@@ -14,27 +14,33 @@ final class FavoriteViewModel {
     let coreDataInteractor: CoreDataInteractorProtocol
     
     let dataSource$: Driver<[SearchItemViewModel]>
-    
-//    private var didChange$: PublishSubject<[SearchCoreDataModel]> {
-//        return coreDataInteractor.didChangeCoreData$
+//    {
+//        return items$.asDriver(onErrorJustReturn: [])
 //    }
+    
+    private var items$: BehaviorRelay<[SearchCoreDataModel]> = .init(value: [])
+    
+    private let disposeBag: DisposeBag = .init()
     
     // MARK: - init
     
     init(coreDataInteractor: CoreDataInteractorProtocol) {
         self.coreDataInteractor = coreDataInteractor
         
-        let dataSource$ = coreDataInteractor.didChangeCoreData$
+        coreDataInteractor.didChangeCoreData$
+            .bind(to: items$)
+            .disposed(by: disposeBag)
+        
+        let dataSource$ = items$
             .map({ models -> [SearchItemViewModel] in
-               let searchItemViewModels: [SearchItemViewModel] = models.map { model -> SearchItemViewModel in
-                    let display_sitename: String = model.display_sitename ?? ""
-                    let image_url: String = model.image_url ?? ""
+                let searchItemViewModels: [SearchItemViewModel] = models.map { model -> SearchItemViewModel in
+                    let display_sitename: String = model.display_sitename// ?? ""
+                    let image_url: String = model.image_url// ?? ""
                     let searchItemViewModel: SearchItemViewModel = SearchItemViewModel(display_sitename: display_sitename, image_url: image_url, isFavorite: true)
                     return searchItemViewModel
                 }
-                return searchItemViewModels
-            })
-            .share()
+            return searchItemViewModels
+        })
             .asDriver(onErrorJustReturn: [])
         
         self.dataSource$ = dataSource$
@@ -47,5 +53,8 @@ final class FavoriteViewModel {
         coreDataInteractor.fetchCoreData()
     }
     
-    
+    func deleteFavorite(_ indexPath: IndexPath) {
+        let dataModel = items$.value[indexPath.row]
+        coreDataInteractor.deleteFavorite(dataModel: dataModel)
+    }
 }

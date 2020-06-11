@@ -34,10 +34,14 @@ enum API: APIProviderProtocol {
     
     case imageUrl(text: String, page: Int, sort: APISort, size: Int)
     
+    private var baseURLString: String {
+        return "https://dapi.kakao.com/v2"
+    }
+    
     private var urlString: String {
         switch self {
         case .imageUrl(_, _, _, _):
-            return "https://dapi.kakao.com/v2/search/image"
+            return "\(baseURLString)/search/image"
         }
     }
     
@@ -113,8 +117,8 @@ enum API: APIProviderProtocol {
                 return
             }
             
-            let json: String = String(data: data, encoding: .utf8) ?? ""
-            print("json = \(json)")
+//            let json: String = String(data: data, encoding: .utf8) ?? ""
+//            print("json = \(json)")
             if let rootModel: T = try? JSONDecoder().decode(type, from: data) {
                 completion(.success(rootModel))
             }

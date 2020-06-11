@@ -16,10 +16,10 @@ extension SearchCoreDataModel {
         return NSFetchRequest<SearchCoreDataModel>(entityName: "SearchCoreDataModel")
     }
 
-    @NSManaged public var collection: String?
-    @NSManaged public var display_sitename: String?
-    @NSManaged public var image_url: String?
-    @NSManaged public var thumbnail_url: String?
-    @NSManaged public var update_date: Date?
+    @NSManaged public var collection: String
+    @NSManaged public var display_sitename: String
+    @NSManaged public var image_url: String
+    @NSManaged public var thumbnail_url: String
+    @NSManaged public var update_date: Date
 
 }

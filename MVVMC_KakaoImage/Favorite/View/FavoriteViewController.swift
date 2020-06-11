@@ -24,7 +24,7 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
+//        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +47,13 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
                 
                 return cell
         }.disposed(by: disposeBag)
-
+        
+        self.collectionView.rx.itemSelected
+            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.deleteFavorite(indexPath)
+            })
+            .disposed(by: disposeBag)
     }
     
     /*
@@ -63,5 +69,7 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
-    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        viewModel.deleteFavorite(indexPath)
+//    }
 }

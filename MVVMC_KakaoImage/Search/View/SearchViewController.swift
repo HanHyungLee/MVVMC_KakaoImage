@@ -17,7 +17,15 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     
     var viewModel: SearchViewModel!
     
-    let disposeBag: DisposeBag = DisposeBag()
+    // searchBar
+    private lazy var currentSearchText: String? = nil
+    
+    // paging
+    private var currentPage: Int = 0
+    private var isMoreLoading: Bool = false
+    
+    // rx
+    private let disposeBag: DisposeBag = DisposeBag()
     
     // MARK: - View lifecycle
     
@@ -34,15 +42,18 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     func bindViewModel() {
         
         viewModel.dataSource$
-            .drive(self.collectionView.rx.items) { collectionView, row, cellViewModel -> SearchItemCollectionViewCell in
-                // cell
+            .do(onNext: { models in
+                print("models.count = \(models.count)")
+//                self?.isMoreLoading = false
+            })
+            .drive(collectionView.rx.items) { collectionView, row, cellViewModel -> SearchItemCollectionViewCell in
                 let indexPath: IndexPath = IndexPath(row: row, section: 0)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
-//                let cellViewModel: SearchItemViewModel = .init(display_sitename: document.display_sitename, image_url: document.image_url)
                 cell.configure(cellViewModel)
                 cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
                 return cell
-        }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Private Function
@@ -60,10 +71,6 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
         self.searchBar.keyboardAppearance = .dark
     }
     
-    private func updateUI() {
-        self.collectionView.reloadData()
-    }
-    
     /*
      // MARK: - Navigation
      
@@ -76,26 +83,31 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     
 }
 
-//extension SearchViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.viewModel.numberOfRows()
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
-//        let document = self.viewModel.documents[indexPath.row]
-//        let cellViewModel = SearchItemViewModel(document: document)
-//        cell.configure(cellViewModel)
-//        cell.imageView.kf.setImage(with: URL(string: document.image_url))
-//        return cell
-//    }
-//}
+// MARK: - UICollectionViewDelegate
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.saveSearch(indexPath: indexPath)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffSetY: CGFloat = scrollView.contentOffset.y
+        if contentOffSetY >= (scrollView.contentSize.height - scrollView.bounds.height * 2) {
+            guard currentSearchText != nil,
+                currentPage > 0,
+                !isMoreLoading else { return }
+            self.isMoreLoading = true
+            print("더보기!")
+            let isEnd: Bool = viewModel.meta.is_end
+            if !isEnd {
+                self.currentPage += 1
+                viewModel.fetchSearch(text: currentSearchText!, page: currentPage)
+            }
+        }
+    }
 }
+
+// MARK: - UISearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
     
@@ -104,9 +116,11 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchBarSearchButtonClicked \(searchBar.text ?? "nil")")
+        self.currentPage = 1
+        
         if let text: String = searchBar.text {
-            self.viewModel.fetchSearch(text: text, page: 1)
+            self.currentSearchText = text
+            viewModel.fetchSearch(text: text, page: currentPage)
         }
         searchBar.resignFirstResponder()
     }

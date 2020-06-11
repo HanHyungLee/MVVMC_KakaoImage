@@ -22,7 +22,7 @@ struct Document: Codable, Equatable {
     let thumbnail_url: String
     let width: Int
     
-    // coreData 용
+    // coreData 용 (이건 밸류타입 변경시 immutable 문제가 되서 추천하지 않는다.)
 //    private(set) lazy var isFavorite: Bool = false
     
     static func ==(lhs: Document, rhs: Document) -> Bool {
@@ -31,10 +31,18 @@ struct Document: Codable, Equatable {
             lhs.thumbnail_url == rhs.thumbnail_url &&
             lhs.display_sitename == rhs.display_sitename
     }
-    
-//    mutating func setFavorite(_ isFavorite: Bool) {
-//        self.isFavorite = isFavorite
-//    }
+}
+
+extension Document {
+    func parse() -> SearchCoreDataModel {
+        let model = SearchCoreDataModel()
+        model.collection = self.collection
+        model.display_sitename = self.display_sitename
+        model.image_url = self.image_url
+        model.thumbnail_url = self.thumbnail_url
+        model.update_date = Date()
+        return model
+    }
 }
 
 struct Meta: Codable {
