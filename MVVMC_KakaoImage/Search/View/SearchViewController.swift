@@ -59,7 +59,7 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     // MARK: - Private Function
     
     private func setupUI() {
-        self.navigationItem.title = "검색"
+        self.title = "검색"
         
         self.collectionView.delegate = self
         

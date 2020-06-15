@@ -121,6 +121,8 @@ final class CoreDataInteractor: CoreDataInteractorProtocol {
                 context.delete($0)
             }
             try context.save()
+            
+            fetchCoreData()
         } catch {
             print("error.localizedDescription = \(error.localizedDescription)")
         }

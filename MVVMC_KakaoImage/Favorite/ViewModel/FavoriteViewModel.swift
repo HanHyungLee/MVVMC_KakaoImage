@@ -39,8 +39,8 @@ final class FavoriteViewModel {
                     let searchItemViewModel: SearchItemViewModel = SearchItemViewModel(display_sitename: display_sitename, image_url: image_url, isFavorite: true)
                     return searchItemViewModel
                 }
-            return searchItemViewModels
-        })
+                return searchItemViewModels
+            })
             .asDriver(onErrorJustReturn: [])
         
         self.dataSource$ = dataSource$

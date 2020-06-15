@@ -18,16 +18,25 @@ final class SearchViewModel {
         return searchInteractor.rootModel
     }
     
-    lazy var dataSource$: Driver<[SearchItemCellViewModelProtocol]> = {
-        return Observable
-            .combineLatest(totalData$.asObservable(), newData$.asObserver())
-            .map { $0 + $1 }
-            .asDriver(onErrorJustReturn: [])
-    }()
+//    lazy var dataSource$: Driver<[SearchItemCellViewModelProtocol]> = {
+//        totalData$
+//            .map { documents -> [SearchItemViewModel] in
+//                print("22documents.count = \(documents.count)")
+//                let cellViewModels: [SearchItemViewModel] = documents.map { document -> SearchItemViewModel in
+//                    let isFavorite: Bool = self.coreDataInteractor.isFavorite(document: document)
+//                    return SearchItemViewModel(document: document, isFavorite: isFavorite)
+//                }
+//                return cellViewModels
+//            }
+//            .asDriver(onErrorJustReturn: [])
+//    }()
+    let dataSource$: Driver<[SearchItemViewModel]>
+//    let reloadCell$: PublishSubject<[IndexPath]> = .init()
     
-    private var totalData$: BehaviorRelay<[SearchItemViewModel]> = .init(value: [])
-    
-    private var newData$: PublishSubject<[SearchItemViewModel]> = .init()
+    // 최종 합산 데이터
+    private var totalData$: BehaviorRelay<[Document]> = .init(value: [])
+    // 새로 추가되는 데이터
+    private var newData$: BehaviorRelay<[Document]> = .init(value: [])
     
     lazy var meta: Meta = {
         return searchInteractor.rootModel.meta
@@ -41,27 +50,35 @@ final class SearchViewModel {
         self.searchInteractor = searchInteractor
         self.coreDataInteractor = coreDataInteractor
         
-        bind()
-    }
-    
-    private func bind() {
         searchInteractor.didChange$
-            .subscribe(onNext: { [weak self] documents in
-                guard let self = self else { return }
-
-                let cellViewModels: [SearchItemViewModel] = documents.map { document -> SearchItemViewModel in
-                    let isFavorite: Bool = self.coreDataInteractor.isFavorite(document: document)
-                    return SearchItemViewModel(document: document, isFavorite: isFavorite)
-                }
-                
-                if self.totalData$.value.count == 0 {
-                    self.totalData$.accept(cellViewModels)
-                }
-                else {
-                    self.newData$.onNext(cellViewModels)
-                }
+//            .debug()
+            .bind(to: newData$)
+            .disposed(by: disposeBag)
+        
+        newData$
+            .debug()
+            .withLatestFrom(totalData$) { $1 + $0 }
+            .bind(to: totalData$)
+            .disposed(by: disposeBag)
+        
+        totalData$
+            .subscribe(onNext: { documents in
+                print("documents.count = \(documents.count)")
             })
             .disposed(by: disposeBag)
+        
+        let dataSource$ = totalData$
+            .map { documents -> [SearchItemViewModel] in
+                print("22documents.count = \(documents.count)")
+                let cellViewModels: [SearchItemViewModel] = documents.map { document -> SearchItemViewModel in
+                    let isFavorite: Bool = coreDataInteractor.isFavorite(document: document)
+                    return SearchItemViewModel(document: document, isFavorite: isFavorite)
+                }
+                return cellViewModels
+        }
+        .asDriver(onErrorJustReturn: [])
+        
+        self.dataSource$ = dataSource$
     }
     
     
@@ -76,9 +93,9 @@ final class SearchViewModel {
     }
     
     func saveSearch(indexPath: IndexPath) {
-        let row: Int = indexPath.row
-        let document: Document = rootModel.documents[row]
+        let document: Document = totalData$.value[indexPath.row]
         coreDataInteractor.saveSearch(document: document)
+        totalData$.accept(totalData$.value)
     }
     
     func clear() {

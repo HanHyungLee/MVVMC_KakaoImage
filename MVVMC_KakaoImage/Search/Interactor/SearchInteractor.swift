@@ -26,19 +26,12 @@ final class SearchInteractor: SearchInteractorProtocol {
     }
     var didChange$: PublishSubject<[Document]> = .init()
     
-//    private let apiProvider: API
     
+    // MARK: - init
     
     init(rootModel: RootModel) {
         self.rootModel = rootModel
         self.didChange$.onNext(rootModel.documents)
-        
-//        let searchModels = fetchCoreData()
-//        searchModels.forEach {
-//            print("\($0.update_date)")
-//            print("\($0.collection)")
-//            print("\($0.image_url)")
-//        }
     }
     
     // MARK: - API

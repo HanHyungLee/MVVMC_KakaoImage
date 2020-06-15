@@ -24,7 +24,7 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setupUI()
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +34,9 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
     }
     
     private func setupUI() {
-        self.collectionView.delegate = self
+        self.title = "즐겨찾기"
+        
+//        self.collectionView.delegate = self
     }
     
     func bindViewModel() {

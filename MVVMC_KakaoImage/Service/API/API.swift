@@ -99,8 +99,6 @@ enum API: APIProviderProtocol {
         // Network
         let urlSession: URLSession = URLSession(configuration: configuration)
         urlSession.dataTask(with: url) { (data, response, error) in
-//            print("response = \(String(describing: response))")
-//            print("error = \(String(describing: error))")
             guard error == nil else {
                 completion(.failure(.etc(localizedString: error?.localizedDescription ?? "")))
                 return
@@ -117,8 +115,6 @@ enum API: APIProviderProtocol {
                 return
             }
             
-//            let json: String = String(data: data, encoding: .utf8) ?? ""
-//            print("json = \(json)")
             if let rootModel: T = try? JSONDecoder().decode(type, from: data) {
                 completion(.success(rootModel))
             }
