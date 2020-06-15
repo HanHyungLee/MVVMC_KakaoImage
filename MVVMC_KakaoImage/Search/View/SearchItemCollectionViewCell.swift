@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class SearchItemCollectionViewCell: UICollectionViewCell, ReusableView {
     
@@ -14,8 +15,19 @@ final class SearchItemCollectionViewCell: UICollectionViewCell, ReusableView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
+    var disposeBag: DisposeBag = .init()
     
     // MARK: - View lifecycle
+    
+//    deinit {
+//        print("deinit cell")
+//    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.disposeBag = .init()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -95,6 +95,10 @@ final class SearchViewModel {
     func saveSearch(indexPath: IndexPath) {
         let document: Document = totalData$.value[indexPath.row]
         coreDataInteractor.saveSearch(document: document)
+        reloadData()
+    }
+    
+    func reloadData() {
         totalData$.accept(totalData$.value)
     }
     

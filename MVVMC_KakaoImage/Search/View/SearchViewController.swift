@@ -51,9 +51,22 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
                 cell.configure(cellViewModel)
                 cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
+                
+                cell.likeButton.rx.tap
+                    .subscribe(onNext: { [weak self] _ in
+                        self?.viewModel.saveSearch(indexPath: indexPath)
+                    })
+                    .disposed(by: cell.disposeBag)
+                
                 return cell
             }
             .disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.reloadData()
     }
     
     // MARK: - Private Function
