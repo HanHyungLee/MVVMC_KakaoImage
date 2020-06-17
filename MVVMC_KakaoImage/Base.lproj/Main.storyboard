@@ -45,6 +45,56 @@
             </objects>
             <point key="canvasLocation" x="697.10144927536237" y="20.758928571428569"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="JZl-hc-pmU">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zUY-0m-F4y" customClass="DetailViewController" customModule="MVVMC_KakaoImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JfN-Q0-0CT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tnw-gO-EAz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="794"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oae-se-yVV">
+                                <rect key="frame" x="0.0" y="838" width="414" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBG-h3-67w">
+                                <rect key="frame" x="0.0" y="832" width="414" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onButton:" destination="zUY-0m-F4y" eventType="touchUpInside" id="Id9-Hu-XL7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VZn-mq-AYo" firstAttribute="bottom" secondItem="KBG-h3-67w" secondAttribute="bottom" id="8Fu-aC-uRc"/>
+                            <constraint firstItem="VZn-mq-AYo" firstAttribute="trailing" secondItem="KBG-h3-67w" secondAttribute="trailing" id="Ae7-yh-Lma"/>
+                            <constraint firstItem="KBG-h3-67w" firstAttribute="leading" secondItem="VZn-mq-AYo" secondAttribute="leading" id="D8q-8h-vvY"/>
+                            <constraint firstItem="VZn-mq-AYo" firstAttribute="bottom" secondItem="Oae-se-yVV" secondAttribute="bottom" id="IDd-wp-f5m"/>
+                            <constraint firstItem="Tnw-gO-EAz" firstAttribute="top" secondItem="VZn-mq-AYo" secondAttribute="top" id="Lj9-lp-SnC"/>
+                            <constraint firstItem="VZn-mq-AYo" firstAttribute="trailing" secondItem="Oae-se-yVV" secondAttribute="trailing" id="MME-3P-uv5"/>
+                            <constraint firstItem="Oae-se-yVV" firstAttribute="top" secondItem="Tnw-gO-EAz" secondAttribute="bottom" id="MW5-4M-bgK"/>
+                            <constraint firstItem="Oae-se-yVV" firstAttribute="leading" secondItem="VZn-mq-AYo" secondAttribute="leading" id="gma-6Q-O1I"/>
+                            <constraint firstItem="Tnw-gO-EAz" firstAttribute="leading" secondItem="VZn-mq-AYo" secondAttribute="leading" id="pOv-ED-jVa"/>
+                            <constraint firstItem="Tnw-gO-EAz" firstAttribute="trailing" secondItem="VZn-mq-AYo" secondAttribute="trailing" id="sx8-A4-ILa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VZn-mq-AYo"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="KBG-h3-67w" id="6bj-uT-0Zy"/>
+                        <outlet property="imageView" destination="Tnw-gO-EAz" id="l2k-Eg-8Tg"/>
+                        <outlet property="label" destination="Oae-se-yVV" id="gvK-ve-tzE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mec-Hj-a9b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1921.7391304347827" y="-231.02678571428569"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="aUA-E6-4GR">
             <objects>

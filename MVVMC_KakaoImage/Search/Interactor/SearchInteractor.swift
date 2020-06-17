@@ -10,28 +10,31 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+typealias NewDocuments = (documents: [Document], page: Int)
+
 protocol SearchInteractorProtocol {
     var rootModel: RootModel { get }
-    var didChange$: PublishSubject<[Document]> { get }
+    var didChange$: PublishSubject<NewDocuments> { get }
     
     func fetchSearch(text: String, page: Int, sort: API.APISort, size: Int)
 }
 
 final class SearchInteractor: SearchInteractorProtocol {
     
-    private(set) var rootModel: RootModel {
-        didSet {
-            self.didChange$.onNext(rootModel.documents)
-        }
-    }
-    var didChange$: PublishSubject<[Document]> = .init()
+    private(set) var rootModel: RootModel
+//    {
+//        didSet {
+//            self.didChange$.onNext(rootModel.documents)
+//        }
+//    }
+    var didChange$: PublishSubject<NewDocuments> = .init()
     
     
     // MARK: - init
     
     init(rootModel: RootModel) {
         self.rootModel = rootModel
-        self.didChange$.onNext(rootModel.documents)
+//        self.didChange$.onNext(rootModel.documents)
     }
     
     // MARK: - API
@@ -42,10 +45,18 @@ final class SearchInteractor: SearchInteractorProtocol {
             switch result {
             case .success(let model):
 //                print("model = \(model)")
-                self.rootModel = model
+//                self.rootModel = model
+                self.setRootModel(rootModel: model, page: page)
             case .failure(let error):
                 print("error = \(error)")
             }
         }
+    }
+    
+    // MARK: - Private Function
+    
+    private func setRootModel(rootModel: RootModel, page: Int) {
+        self.rootModel = rootModel
+        didChange$.onNext((rootModel.documents, page))
     }
 }

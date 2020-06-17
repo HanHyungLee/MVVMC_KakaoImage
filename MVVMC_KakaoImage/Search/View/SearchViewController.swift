@@ -21,7 +21,7 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     private lazy var currentSearchText: String? = nil
     
     // paging
-    private var currentPage: Int = 0
+//    private var currentPage: Int = 0
     private var isMoreLoading: Bool = false
     
     // rx
@@ -42,16 +42,19 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     func bindViewModel() {
         
         viewModel.dataSource$
-            .do(onNext: { models in
-                print("models.count = \(models.count)")
-//                self?.isMoreLoading = false
-            })
+            .do(afterNext: { [weak self] models in
+                guard let self = self else { return }
+                print("afterNext.count = \(models.count)")
+                guard models.count > 0 else { return }
+                self.isMoreLoading = self.viewModel.isEndPage
+                })
             .drive(collectionView.rx.items) { collectionView, row, cellViewModel -> SearchItemCollectionViewCell in
                 let indexPath: IndexPath = IndexPath(row: row, section: 0)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
                 cell.configure(cellViewModel)
                 cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
                 
+                // likeButton
                 cell.likeButton.rx.tap
                     .subscribe(onNext: { [weak self] _ in
                         self?.viewModel.saveSearch(indexPath: indexPath)
@@ -106,6 +109,7 @@ extension SearchViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffSetY: CGFloat = scrollView.contentOffset.y
         if contentOffSetY >= (scrollView.contentSize.height - scrollView.bounds.height * 2) {
+            let currentPage: Int = viewModel.currentPage
             guard currentSearchText != nil,
                 currentPage > 0,
                 !isMoreLoading else { return }
@@ -113,8 +117,7 @@ extension SearchViewController: UICollectionViewDelegate {
             print("더보기!")
             let isEnd: Bool = viewModel.meta.is_end
             if !isEnd {
-                self.currentPage += 1
-                viewModel.fetchSearch(text: currentSearchText!, page: currentPage)
+                viewModel.fetchSearch(text: currentSearchText!, page: currentPage + 1)
             }
         }
     }
@@ -129,11 +132,9 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.currentPage = 1
-        
         if let text: String = searchBar.text {
             self.currentSearchText = text
-            viewModel.fetchSearch(text: text, page: currentPage)
+            viewModel.fetchSearch(text: text, page: 1)
         }
         searchBar.resignFirstResponder()
     }

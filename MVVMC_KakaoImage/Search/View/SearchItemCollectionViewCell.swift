@@ -26,7 +26,7 @@ final class SearchItemCollectionViewCell: UICollectionViewCell, ReusableView {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.disposeBag = .init()
+        self.disposeBag = DisposeBag()
     }
     
     override func awakeFromNib() {

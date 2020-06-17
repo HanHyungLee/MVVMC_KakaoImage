@@ -31,18 +31,25 @@ final class SearchViewModel {
 //            .asDriver(onErrorJustReturn: [])
 //    }()
     let dataSource$: Driver<[SearchItemViewModel]>
-//    let reloadCell$: PublishSubject<[IndexPath]> = .init()
     
     // 최종 합산 데이터
     private var totalData$: BehaviorRelay<[Document]> = .init(value: [])
     // 새로 추가되는 데이터
-    private var newData$: BehaviorRelay<[Document]> = .init(value: [])
+    private var newData$: BehaviorRelay<NewDocuments> = .init(value: ([], 0))
     
+    private let disposeBag: DisposeBag = .init()
+    
+    // pagenation
+    private(set) var currentPage: Int = 0
+    
+    // meta
     lazy var meta: Meta = {
         return searchInteractor.rootModel.meta
     }()
     
-    let disposeBag: DisposeBag = .init()
+    lazy var isEndPage: Bool = {
+        return searchInteractor.rootModel.meta.is_end
+    }()
     
     // MARK: - init
     
@@ -57,7 +64,14 @@ final class SearchViewModel {
         
         newData$
             .debug()
-            .withLatestFrom(totalData$) { $1 + $0 }
+            .withLatestFrom(totalData$) {
+                if $0.page == 1 {
+                    return $0.documents
+                }
+                else {
+                    return $1 + $0.documents
+                }
+            }
             .bind(to: totalData$)
             .disposed(by: disposeBag)
         
@@ -85,6 +99,7 @@ final class SearchViewModel {
     // MARK: - Public Function
     
     func fetchSearch(text: String, page: Int, sort: API.APISort = .accuracy, size: Int = 80) {
+        self.currentPage = page
         searchInteractor.fetchSearch(text: text, page: page, sort: sort, size: size)
     }
     

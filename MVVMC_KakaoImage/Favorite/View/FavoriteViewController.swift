@@ -36,10 +36,11 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
     private func setupUI() {
         self.title = "즐겨찾기"
         
-//        self.collectionView.delegate = self
+        self.collectionView.delegate = self
     }
     
     func bindViewModel() {
+        // dataSource
         self.viewModel.dataSource$
             .drive(self.collectionView.rx.items) { collectionView, row, cellViewModel in
                 let indexPath: IndexPath = IndexPath(row: row, section: 0)
@@ -47,15 +48,24 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
                 cell.configure(cellViewModel)
                 cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
                 
+                cell.likeButton.rx.tap
+                    .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+                    .subscribe(onNext: { [weak self] _ in
+                        guard let self = self else { return }
+                        self.viewModel.deleteFavorite(indexPath)
+                    })
+                    .disposed(by: cell.disposeBag)
+                
                 return cell
         }.disposed(by: disposeBag)
         
-        self.collectionView.rx.itemSelected
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] indexPath in
-                self?.viewModel.deleteFavorite(indexPath)
-            })
-            .disposed(by: disposeBag)
+        // didSelect
+//        self.collectionView.rx.itemSelected
+//            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] indexPath in
+//                self?.viewModel.deleteFavorite(indexPath)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     /*
@@ -71,7 +81,11 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        viewModel.deleteFavorite(indexPath)
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: 임시
+        var detailVC: DetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let coreDataModel = viewModel.getItem(indexPath: indexPath)
+        detailVC.bind(viewModel: DetailViewModel(model: coreDataModel.convertSearchItemViewModel()))
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }

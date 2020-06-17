@@ -49,6 +49,10 @@ final class FavoriteViewModel {
     
     // MARK: - Public Function
     
+    func getItem(indexPath: IndexPath) -> SearchCoreDataModel {
+        return items$.value[indexPath.row]
+    }
+    
     func fetchFavorite() {
         coreDataInteractor.fetchCoreData()
     }
