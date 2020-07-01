@@ -10,6 +10,8 @@
 		22A0B27E87DCFC92437F74B2 /* Pods_MVVMC_KakaoImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260DD5D31AC01937745267C0 /* Pods_MVVMC_KakaoImage.framework */; };
 		3B0555F67E5B202CE5679789 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8671FD2E08DCE5BA98102780 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework */; };
 		6560C740D9FBC3597D705298 /* Pods_MVVMC_KakaoImageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F7B0E5C676361E427DD565 /* Pods_MVVMC_KakaoImageTests.framework */; };
+		F10282DA24A789FD002964F9 /* FavoriteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10282D924A789FD002964F9 /* FavoriteCoordinator.swift */; };
+		F10282DD24A79012002964F9 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10282DC24A79012002964F9 /* DetailCoordinator.swift */; };
 		F109E07A2480031600EEA812 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109E0792480031600EEA812 /* SearchCellViewModel.swift */; };
 		F109E07D248003DF00EEA812 /* SearchItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */; };
 		F109E07E248003DF00EEA812 /* SearchItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */; };
@@ -68,6 +70,8 @@
 		7F42C65684F9B70853DD34CF /* Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests/Pods-MVVMC_KakaoImage-MVVMC_KakaoImageUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8671FD2E08DCE5BA98102780 /* Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMC_KakaoImage_MVVMC_KakaoImageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFBFE0096BAD2713D674855D /* Pods-MVVMC_KakaoImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMC_KakaoImage.release.xcconfig"; path = "Target Support Files/Pods-MVVMC_KakaoImage/Pods-MVVMC_KakaoImage.release.xcconfig"; sourceTree = "<group>"; };
+		F10282D924A789FD002964F9 /* FavoriteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCoordinator.swift; sourceTree = "<group>"; };
+		F10282DC24A79012002964F9 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
 		F109E0792480031600EEA812 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
 		F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -155,6 +159,14 @@
 				31F7B0E5C676361E427DD565 /* Pods_MVVMC_KakaoImageTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F10282DB24A79005002964F9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F10282DC24A79012002964F9 /* DetailCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		F133F0BB2487A56C0075A150 /* CoreDataStorage */ = {
@@ -306,6 +318,7 @@
 		F1E1A638247C07A300347D82 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				F10282D924A789FD002964F9 /* FavoriteCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -362,6 +375,7 @@
 		F1EA25CB249900FD008A7A6C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				F10282DB24A79005002964F9 /* Coordinator */,
 				F1EA25CC24990128008A7A6C /* View */,
 				F1EA25CD24990131008A7A6C /* ViewModel */,
 			);
@@ -632,6 +646,8 @@
 				F15FE2EC248E6BBA006F9A8D /* BaseViewController.swift in Sources */,
 				F1E1A643247C0DB600347D82 /* SearchViewModel.swift in Sources */,
 				F1E1A645247C0DC200347D82 /* SearchInteractor.swift in Sources */,
+				F10282DD24A79012002964F9 /* DetailCoordinator.swift in Sources */,
+				F10282DA24A789FD002964F9 /* FavoriteCoordinator.swift in Sources */,
 				F15FE2F2248E70D7006F9A8D /* CoreDataInteractor.swift in Sources */,
 				F18429692483FF9900E13D93 /* Scene.swift in Sources */,
 				F1E1A648247C0FDB00347D82 /* SearchModel.swift in Sources */,

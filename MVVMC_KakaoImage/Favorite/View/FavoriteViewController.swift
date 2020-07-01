@@ -48,6 +48,7 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
                 cell.configure(cellViewModel)
                 cell.imageView.kf.setImage(with: URL(string: cellViewModel.image_url))
                 
+                // didSelect
                 cell.likeButton.rx.tap
                     .throttle(.microseconds(500), scheduler: MainScheduler.instance)
                     .subscribe(onNext: { [weak self] _ in
@@ -58,14 +59,6 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
                 
                 return cell
         }.disposed(by: disposeBag)
-        
-        // didSelect
-//        self.collectionView.rx.itemSelected
-//            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] indexPath in
-//                self?.viewModel.deleteFavorite(indexPath)
-//            })
-//            .disposed(by: disposeBag)
     }
     
     /*
@@ -82,10 +75,6 @@ final class FavoriteViewController: BaseViewController, ViewModelBindableType {
 
 extension FavoriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: 임시
-        var detailVC: DetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        let coreDataModel = viewModel.getItem(indexPath: indexPath)
-        detailVC.bind(viewModel: DetailViewModel(model: coreDataModel.convertSearchItemViewModel()))
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        viewModel.showDetail(indexPath)
     }
 }

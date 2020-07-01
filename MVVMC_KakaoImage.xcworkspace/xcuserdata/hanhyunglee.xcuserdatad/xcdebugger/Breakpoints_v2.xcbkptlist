@@ -46,9 +46,9 @@
             filePath = "MVVMC_KakaoImage/Search/ViewModel/SearchViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "init(searchInteractor:coreDataInteractor:)"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "init(searchInteractor:coreDataInteractor:sceneCoordinate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,8 +62,8 @@
             filePath = "MVVMC_KakaoImage/Detail/View/DetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "deinit"
             landmarkType = "7">
          </BreakpointContent>

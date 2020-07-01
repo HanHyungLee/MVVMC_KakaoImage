@@ -13,23 +13,13 @@ import RxCocoa
 final class SearchViewModel {
     private let searchInteractor: SearchInteractorProtocol
     private let coreDataInteractor: CoreDataInteractorProtocol
+    private let sceneCoordinate: SceneCoordinatorType
     
     private var rootModel: RootModel {
         return searchInteractor.rootModel
     }
     
-//    lazy var dataSource$: Driver<[SearchItemCellViewModelProtocol]> = {
-//        totalData$
-//            .map { documents -> [SearchItemViewModel] in
-//                print("22documents.count = \(documents.count)")
-//                let cellViewModels: [SearchItemViewModel] = documents.map { document -> SearchItemViewModel in
-//                    let isFavorite: Bool = self.coreDataInteractor.isFavorite(document: document)
-//                    return SearchItemViewModel(document: document, isFavorite: isFavorite)
-//                }
-//                return cellViewModels
-//            }
-//            .asDriver(onErrorJustReturn: [])
-//    }()
+    // dataSource
     let dataSource$: Driver<[SearchItemViewModel]>
     
     // 최종 합산 데이터
@@ -53,9 +43,10 @@ final class SearchViewModel {
     
     // MARK: - init
     
-    init(searchInteractor: SearchInteractorProtocol, coreDataInteractor: CoreDataInteractorProtocol) {
+    init(searchInteractor: SearchInteractorProtocol, coreDataInteractor: CoreDataInteractorProtocol, sceneCoordinate: SceneCoordinatorType) {
         self.searchInteractor = searchInteractor
         self.coreDataInteractor = coreDataInteractor
+        self.sceneCoordinate = sceneCoordinate
         
         searchInteractor.didChange$
 //            .debug()
@@ -75,15 +66,14 @@ final class SearchViewModel {
             .bind(to: totalData$)
             .disposed(by: disposeBag)
         
-        totalData$
-            .subscribe(onNext: { documents in
-                print("documents.count = \(documents.count)")
-            })
-            .disposed(by: disposeBag)
+//        totalData$
+//            .subscribe(onNext: { documents in
+//                print("documents.count = \(documents.count)")
+//            })
+//            .disposed(by: disposeBag)
         
         let dataSource$ = totalData$
             .map { documents -> [SearchItemViewModel] in
-                print("22documents.count = \(documents.count)")
                 let cellViewModels: [SearchItemViewModel] = documents.map { document -> SearchItemViewModel in
                     let isFavorite: Bool = coreDataInteractor.isFavorite(document: document)
                     return SearchItemViewModel(document: document, isFavorite: isFavorite)
@@ -119,5 +109,13 @@ final class SearchViewModel {
     
     func clear() {
         
+    }
+    
+    func pushToDetail(indexPath: IndexPath, navigationController: UINavigationController?) {
+        let searchItem = totalData$.value[indexPath.row].convertSearchItemViewModel()
+        let coordinator: DetailCoordinator = .init(navigationController: navigationController)
+        let viewModel: DetailViewModel = .init(model: searchItem, coordinator: coordinator)
+        let detailScene: Scene = .detial(viewModel)
+        sceneCoordinate.transition(to: detailScene, type: .push, animated: true)
     }
 }

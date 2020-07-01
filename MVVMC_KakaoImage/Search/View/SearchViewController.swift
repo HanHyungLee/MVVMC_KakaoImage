@@ -21,7 +21,9 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     private lazy var currentSearchText: String? = nil
     
     // paging
-//    private var currentPage: Int = 0
+    private var currentPage: Int {
+        return viewModel.currentPage
+    }
     private var isMoreLoading: Bool = false
     
     // rx
@@ -47,7 +49,10 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
                 print("afterNext.count = \(models.count)")
                 guard models.count > 0 else { return }
                 self.isMoreLoading = self.viewModel.isEndPage
-                })
+                if self.viewModel.currentPage == 1 {
+                    self.collectionView.setContentOffset(.zero, animated: false)
+                }
+            })
             .drive(collectionView.rx.items) { collectionView, row, cellViewModel -> SearchItemCollectionViewCell in
                 let indexPath: IndexPath = IndexPath(row: row, section: 0)
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCollectionViewCell.reuseIdentifier, for: indexPath) as! SearchItemCollectionViewCell
@@ -103,20 +108,19 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
 
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.saveSearch(indexPath: indexPath)
+        viewModel.pushToDetail(indexPath: indexPath, navigationController: navigationController)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffSetY: CGFloat = scrollView.contentOffset.y
         if contentOffSetY >= (scrollView.contentSize.height - scrollView.bounds.height * 2) {
-            let currentPage: Int = viewModel.currentPage
             guard currentSearchText != nil,
                 currentPage > 0,
                 !isMoreLoading else { return }
             self.isMoreLoading = true
             print("더보기!")
-            let isEnd: Bool = viewModel.meta.is_end
-            if !isEnd {
+            let isEndPage: Bool = viewModel.isEndPage
+            if !isEndPage {
                 viewModel.fetchSearch(text: currentSearchText!, page: currentPage + 1)
             }
         }

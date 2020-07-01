@@ -11,9 +11,8 @@ import Kingfisher
 
 class DetailViewController: UIViewController, ViewModelBindableType {
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var label: UILabel!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
     
     var viewModel: DetailViewModel!
     
@@ -37,13 +36,4 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     
     // MARK: - IBAction Function
     
-    @IBAction func onButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
-            self.imageView.removeFromSuperview()
-        }
-        else {
-            self.view.addSubview(self.imageView)
-        }
-    }
 }

@@ -34,14 +34,9 @@ struct Document: Codable, Equatable {
 }
 
 extension Document {
-    func parse() -> SearchCoreDataModel {
-        let model = SearchCoreDataModel()
-        model.collection = self.collection
-        model.display_sitename = self.display_sitename
-        model.image_url = self.image_url
-        model.thumbnail_url = self.thumbnail_url
-        model.update_date = Date()
-        return model
+    func convertSearchItemViewModel() -> SearchItemCellViewModelProtocol {
+        let searchItem: SearchItemViewModel = .init(display_sitename: self.display_sitename, image_url: self.image_url, isFavorite: true)
+        return searchItem
     }
 }
 

@@ -20,19 +20,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        deleteAllContext()
         
         // TODO: RootModel을 다른 식으로 주입할 수 있을까?
+        let coordinator = SceneCoordinator(window: window!)
+        
         let rootModel = RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0))
         let interactor = SearchInteractor(rootModel: rootModel)
         let coreDataInteractor = CoreDataInteractor()
-        let searchViewModel = SearchViewModel(searchInteractor: interactor, coreDataInteractor: coreDataInteractor)
+        let searchViewModel = SearchViewModel(searchInteractor: interactor, coreDataInteractor: coreDataInteractor, sceneCoordinate: coordinator)
         let searchScene = Scene.list(searchViewModel)
         
-        let favoriteViewModel = FavoriteViewModel(coreDataInteractor: coreDataInteractor)
+        let favoriteCoordinator: FavoriteCoordinator = .init()
+        let favoriteViewModel = FavoriteViewModel(coreDataInteractor: coreDataInteractor, coordinator: favoriteCoordinator)
         let favoriteScene = Scene.favorite(favoriteViewModel)
         
-        let coordinator = SceneCoordinator(window: window!)
-//        coordinator.transition(to: scene, type: .root, animated: false)
-        
         coordinator.setTabVC(scenes: [searchScene, favoriteScene])
+        
+        // favoriteCoordinator navigation insert
+        favoriteCoordinator.navigationController = coordinator.mainTabC.children[1] as? UINavigationController
         
         return true
     }

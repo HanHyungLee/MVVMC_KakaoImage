@@ -15,6 +15,7 @@ enum Tab {
 enum Scene {
     case list(SearchViewModel)
     case favorite(FavoriteViewModel)
+    case detial(DetailViewModel)
 }
 
 extension Scene {
@@ -32,6 +33,12 @@ extension Scene {
         case .favorite(let viewModel):
             let nav = storyboard.instantiateViewController(withIdentifier: "FavoriteNav") as! UINavigationController
             var vc = nav.viewControllers.first as! FavoriteViewController
+            
+            vc.bind(viewModel: viewModel)
+            
+            return vc
+        case .detial(let viewModel):
+            var vc = storyboard.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
             
             vc.bind(viewModel: viewModel)
             

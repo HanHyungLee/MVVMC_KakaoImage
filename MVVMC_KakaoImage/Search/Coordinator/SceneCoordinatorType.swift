@@ -16,6 +16,4 @@ enum TransitionType {
 
 protocol SceneCoordinatorType {
     func transition(to scene: Scene, type: TransitionType, animated: Bool)
-    
-    func close(animated: Bool)
 }

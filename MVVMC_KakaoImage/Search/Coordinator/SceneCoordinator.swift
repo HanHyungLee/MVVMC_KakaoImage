@@ -11,11 +11,16 @@ import UIKit
 final class SceneCoordinator: SceneCoordinatorType {
     
     var window: UIWindow
-    var currentVC: UIViewController!
+    var mainTabC: UITabBarController!
+    var selectedIndex: Int {
+        return mainTabC.selectedIndex
+    }
+    var currentVC: UIViewController {
+        return mainTabC.children[mainTabC.selectedIndex].children.last!
+    }
     
     init(window: UIWindow) {
         self.window = window
-        self.currentVC = window.rootViewController!
     }
     
     func setTabVC(scenes: [Scene]) {
@@ -29,6 +34,8 @@ final class SceneCoordinator: SceneCoordinatorType {
         mainTabV.setViewControllers(viewControllers, animated: false)
         mainTabV.selectedIndex = 0
         
+        self.mainTabC = mainTabV
+        
         window.rootViewController = mainTabV
         window.makeKeyAndVisible()
     }
@@ -41,23 +48,13 @@ final class SceneCoordinator: SceneCoordinatorType {
         case .root:
             window.rootViewController = target
             window.makeKeyAndVisible()
-            currentVC = target
+            mainTabC = target as? UITabBarController
         case .push:
             let nav = currentVC.navigationController!
             nav.pushViewController(target, animated: animated)
-            currentVC = target
         case .modal:
-            currentVC.present(target, animated: animated) {
-//                self.currentVC = target
-            }
-            currentVC = target
-        default:
-            break
+            currentVC.present(target, animated: true, completion: nil)
         }
-    }
-    
-    func close(animated: Bool) {
-        
     }
     
 }
