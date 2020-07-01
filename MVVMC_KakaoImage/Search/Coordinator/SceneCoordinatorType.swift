@@ -9,7 +9,6 @@
 import Foundation
 
 enum TransitionType {
-    case root
     case push
     case modal
 }

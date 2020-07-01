@@ -19,10 +19,6 @@ class DetailViewController: UIViewController, ViewModelBindableType {
     
     // MARK: - View lifecycle
     
-    deinit {
-        print("\(#function)")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

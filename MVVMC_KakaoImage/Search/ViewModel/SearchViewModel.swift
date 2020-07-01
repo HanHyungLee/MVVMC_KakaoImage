@@ -107,10 +107,6 @@ final class SearchViewModel {
         totalData$.accept(totalData$.value)
     }
     
-    func clear() {
-        
-    }
-    
     func pushToDetail(indexPath: IndexPath, navigationController: UINavigationController?) {
         let searchItem = totalData$.value[indexPath.row].convertSearchItemViewModel()
         let coordinator: DetailCoordinator = .init(navigationController: navigationController)

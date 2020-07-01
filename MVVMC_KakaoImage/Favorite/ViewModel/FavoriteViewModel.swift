@@ -65,10 +65,5 @@ final class FavoriteViewModel {
     func showDetail(_ indexPath: IndexPath) {
         let searchItem = items$.value[indexPath.row].convertSearchItemViewModel()
         coordinator.showDetail(searchItem)
-//        let searchItem = items$.value[indexPath.row].convertSearchItemViewModel()
-//        let coordinator: DetailCoordinator = DetailCoordinator(navigationController: navigationCon)
-//        let viewModel: DetailViewModel = .init(model: searchItem, coordinator: coordinator)
-//        let detailScene: Scene = .detial(viewModel)
-//        coordinator.transition(to: detailScene, type: .push, animated: true)
     }
 }

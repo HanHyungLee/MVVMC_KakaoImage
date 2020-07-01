@@ -45,10 +45,6 @@ final class SceneCoordinator: SceneCoordinatorType {
         let target = scene.instantiate()
         
         switch type {
-        case .root:
-            window.rootViewController = target
-            window.makeKeyAndVisible()
-            mainTabC = target as? UITabBarController
         case .push:
             let nav = currentVC.navigationController!
             nav.pushViewController(target, animated: animated)

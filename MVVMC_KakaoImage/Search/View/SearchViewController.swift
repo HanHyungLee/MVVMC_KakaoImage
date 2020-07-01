@@ -31,10 +31,6 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     
     // MARK: - View lifecycle
     
-    deinit {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

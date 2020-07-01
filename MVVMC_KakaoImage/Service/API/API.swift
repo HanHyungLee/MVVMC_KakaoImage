@@ -84,7 +84,7 @@ enum API: APIProviderProtocol {
         urlComponents.queryItems = queryItems
         
         // URL
-        print("urlComponents.url = \(urlComponents.url?.absoluteString ?? "nil")")
+//        print("urlComponents.url = \(urlComponents.url?.absoluteString ?? "nil")")
         guard let url: URL = urlComponents.url else {
             completion(.failure(.invalidURL))
             return

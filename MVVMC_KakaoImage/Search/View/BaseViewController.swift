@@ -27,8 +27,6 @@ class BaseViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: self.view.bounds.width / 2 - spacing * 3, height: 180.0)
         layout.sectionInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-//        layout.minimumLineSpacing = 5.0
-//        layout.minimumInteritemSpacing = 5.0
         self.collectionView.setCollectionViewLayout(layout, animated: false)
     }
     

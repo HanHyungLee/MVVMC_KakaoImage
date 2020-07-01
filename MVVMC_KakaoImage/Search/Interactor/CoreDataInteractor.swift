@@ -101,10 +101,10 @@ final class CoreDataInteractor: CoreDataInteractorProtocol {
     func deleteFavorite(dataModel: SearchCoreDataModel) {
         let context = appDelegate.persistentContainer.viewContext
         
-        let collection: String = dataModel.collection// ?? ""
-        let display_sitename: String = dataModel.display_sitename// ?? ""
-        let image_url: String = dataModel.image_url// ?? ""
-        let thumbnail_url: String = dataModel.thumbnail_url// ?? ""
+        let collection: String = dataModel.collection
+        let display_sitename: String = dataModel.display_sitename
+        let image_url: String = dataModel.image_url
+        let thumbnail_url: String = dataModel.thumbnail_url
         let predicate: NSPredicate =
             Query.local(collection: collection,
                         display_sitename: display_sitename,
@@ -133,14 +133,8 @@ final class CoreDataInteractor: CoreDataInteractorProtocol {
         
         do {
             let searchModels = try context.fetch(SearchCoreDataModel.fetchRequest()) as! [SearchCoreDataModel]
-//                searchModels.forEach {
-//                    print($0.display_sitename ?? "")
-//                    print($0.image_url ?? "")
-//                }
-//            return searchModels
             didChangeCoreData$.onNext(searchModels)
         } catch {
-            // TODO: error handling
             print("error.localizedDescription = \(error.localizedDescription)")
             didChangeCoreData$.onNext([])
         }

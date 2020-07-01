@@ -19,10 +19,6 @@ final class SearchItemCollectionViewCell: UICollectionViewCell, ReusableView {
     
     // MARK: - View lifecycle
     
-//    deinit {
-//        print("deinit cell")
-//    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         

@@ -12,10 +12,6 @@ final class DetailViewModel {
     let model: SearchItemCellViewModelProtocol
     let coordinator: DetailCoordinatorProtocol
     
-    deinit {
-        print("deinit \(self)")
-    }
-    
     init(model: SearchItemCellViewModelProtocol, coordinator: DetailCoordinatorProtocol) {
         self.model = model
         self.coordinator = coordinator

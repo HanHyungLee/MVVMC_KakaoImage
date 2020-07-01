@@ -22,11 +22,7 @@ protocol SearchInteractorProtocol {
 final class SearchInteractor: SearchInteractorProtocol {
     
     private(set) var rootModel: RootModel
-//    {
-//        didSet {
-//            self.didChange$.onNext(rootModel.documents)
-//        }
-//    }
+    
     var didChange$: PublishSubject<NewDocuments> = .init()
     
     
@@ -34,7 +30,6 @@ final class SearchInteractor: SearchInteractorProtocol {
     
     init(rootModel: RootModel) {
         self.rootModel = rootModel
-//        self.didChange$.onNext(rootModel.documents)
     }
     
     // MARK: - API
@@ -44,8 +39,6 @@ final class SearchInteractor: SearchInteractorProtocol {
             guard let self = self else { return }
             switch result {
             case .success(let model):
-//                print("model = \(model)")
-//                self.rootModel = model
                 self.setRootModel(rootModel: model, page: page)
             case .failure(let error):
                 print("error = \(error)")
