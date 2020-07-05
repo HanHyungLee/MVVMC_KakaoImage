@@ -26,3 +26,4 @@
 
 ## 참고
 [MVVMC - Adapting the MVVM Design Pattern at Runtastic](https://www.runtastic.com/blog/en/mvvmc-adapting-the-mvvm-design-pattern-at-runtastic/)
+[Kxcdoing - Mastering RxSwift](https://www.youtube.com/playlist?list=PLziSvys01Oek7ANk4rzOYobnUU_FTu5ns)
