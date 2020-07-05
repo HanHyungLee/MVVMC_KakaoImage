@@ -13,7 +13,7 @@ protocol DetailCoordinatorProtocol: class {
 }
 
 final class DetailCoordinator: DetailCoordinatorProtocol {
-    
+     
     private weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController?) {

@@ -19,4 +19,10 @@
 3. 상세 이미지 화면
 - 리스트에서 이미지를 탭하면 상세 이미지 화면으로 이동합니다.
 
+## 스크린샷
 
+<img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/Screenshots/search.png" width="40%"><img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/Screenshots/favorite.png" width="40%"><img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/Screenshots/detail.png" width="40%">
+
+
+## 참고
+[MVVMC - Adapting the MVVM Design Pattern at Runtastic](https://www.runtastic.com/blog/en/mvvmc-adapting-the-mvvm-design-pattern-at-runtastic/)
