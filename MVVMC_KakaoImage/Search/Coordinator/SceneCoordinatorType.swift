@@ -6,7 +6,7 @@
 //  Copyright © 2020 Hanhyung Lee. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum TransitionType {
     case push

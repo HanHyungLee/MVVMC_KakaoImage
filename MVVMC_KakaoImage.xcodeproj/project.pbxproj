@@ -23,6 +23,7 @@
 		F1668E3D248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1668E3B248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift */; };
 		F18429692483FF9900E13D93 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18429682483FF9900E13D93 /* Scene.swift */; };
 		F184296B248401C800E13D93 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F184296A248401C800E13D93 /* ViewModelBindableType.swift */; };
+		F1A8925924B1BAA200825291 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8925824B1BAA200825291 /* SearchCoordinator.swift */; };
 		F1B7508024AE2BCA00F76851 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F1B7507F24AE2BCA00F76851 /* README.md */; };
 		F1DBC7BA248548B200190D2B /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */; };
 		F1DBC7BC24854A8200190D2B /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBC7BB24854A8200190D2B /* SceneCoordinator.swift */; };
@@ -84,6 +85,7 @@
 		F1668E3B248E3336005AD75D /* SearchCoreDataModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SearchCoreDataModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F18429682483FF9900E13D93 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		F184296A248401C800E13D93 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
+		F1A8925824B1BAA200825291 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		F1B7507F24AE2BCA00F76851 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
 		F1DBC7BB24854A8200190D2B /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				F18429682483FF9900E13D93 /* Scene.swift */,
 				F1DBC7B9248548B200190D2B /* SceneCoordinatorType.swift */,
 				F1DBC7BB24854A8200190D2B /* SceneCoordinator.swift */,
+				F1A8925824B1BAA200825291 /* SearchCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				F18429692483FF9900E13D93 /* Scene.swift in Sources */,
 				F1E1A648247C0FDB00347D82 /* SearchModel.swift in Sources */,
 				F1EA25D124990158008A7A6C /* DetailViewModel.swift in Sources */,
+				F1A8925924B1BAA200825291 /* SearchCoordinator.swift in Sources */,
 				F1EA25CF24990146008A7A6C /* DetailViewController.swift in Sources */,
 				F15FE2EE248E6C6D006F9A8D /* FavoriteViewModel.swift in Sources */,
 				F1E1A64D247C1B3000347D82 /* API.swift in Sources */,

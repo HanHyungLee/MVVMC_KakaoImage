@@ -16,26 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // TODO: 데이터 모두 삭제
-//        deleteAllContext()
-        
-        // TODO: RootModel을 다른 식으로 주입할 수 있을까?
-        let coordinator = SceneCoordinator(window: window!)
-        
-        let rootModel = RootModel(documents: [], meta: Meta(is_end: true, pageable_count: 0, total_count: 0))
-        let interactor = SearchInteractor(rootModel: rootModel)
-        let coreDataInteractor = CoreDataInteractor()
-        let searchViewModel = SearchViewModel(searchInteractor: interactor, coreDataInteractor: coreDataInteractor, sceneCoordinate: coordinator)
-        let searchScene = Scene.list(searchViewModel)
-        
-        let favoriteCoordinator: FavoriteCoordinator = .init()
-        let favoriteViewModel = FavoriteViewModel(coreDataInteractor: coreDataInteractor, coordinator: favoriteCoordinator)
-        let favoriteScene = Scene.favorite(favoriteViewModel)
-        
-        coordinator.setTabVC(scenes: [searchScene, favoriteScene])
-        
-        // favoriteCoordinator navigation insert
-        favoriteCoordinator.navigationController = coordinator.mainTabC.children[1] as? UINavigationController
+        // set Root
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let scene = SceneCoordinator()
+        window?.rootViewController = scene.setRootScene()
+        window?.makeKeyAndVisible()
         
         return true
     }

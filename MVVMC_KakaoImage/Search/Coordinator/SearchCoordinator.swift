@@ -1,22 +1,23 @@
 //
-//  FavoriteCoordinator.swift
+//  SearchCoordinator.swift
 //  MVVMC_KakaoImage
 //
-//  Created by Hanhyung Lee on 2020/06/27.
+//  Created by Hanhyung Lee on 2020/07/05.
 //  Copyright © 2020 Hanhyung Lee. All rights reserved.
 //
 
 import UIKit
 
-protocol FavoriteCoordinatorProtocol: class {
+protocol SearchCoordinatorProtocol {
     func showDetail(_ cellViewModel: SearchItemCellViewModelProtocol, type: TransitionType)
 }
 
-final class FavoriteCoordinator: FavoriteCoordinatorProtocol {
-    
+final class SearchCoordinator: SearchCoordinatorProtocol {
     weak var navigationController: UINavigationController?
     
-    func showDetail(_  cellViewModel: SearchItemCellViewModelProtocol, type: TransitionType) {
+    // MARK: - Public Function
+    
+    func showDetail(_ cellViewModel: SearchItemCellViewModelProtocol, type: TransitionType) {
         let coordinator = DetailCoordinator(navigationController: navigationController)
         let viewModel: DetailViewModel = .init(model: cellViewModel, coordinator: coordinator)
         let detailScene: Scene = .detial(viewModel)

@@ -64,6 +64,6 @@ final class FavoriteViewModel {
     
     func showDetail(_ indexPath: IndexPath) {
         let searchItem = items$.value[indexPath.row].convertSearchItemViewModel()
-        coordinator.showDetail(searchItem)
+        coordinator.showDetail(searchItem, type: .modal)
     }
 }

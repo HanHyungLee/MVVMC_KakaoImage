@@ -13,7 +13,7 @@ import RxCocoa
 final class SearchViewModel {
     private let searchInteractor: SearchInteractorProtocol
     private let coreDataInteractor: CoreDataInteractorProtocol
-    private let sceneCoordinate: SceneCoordinatorType
+    private let coordinator: SearchCoordinatorProtocol
     
     private var rootModel: RootModel {
         return searchInteractor.rootModel
@@ -43,10 +43,10 @@ final class SearchViewModel {
     
     // MARK: - init
     
-    init(searchInteractor: SearchInteractorProtocol, coreDataInteractor: CoreDataInteractorProtocol, sceneCoordinate: SceneCoordinatorType) {
+    init(searchInteractor: SearchInteractorProtocol, coreDataInteractor: CoreDataInteractorProtocol, coordinator: SearchCoordinatorProtocol) {
         self.searchInteractor = searchInteractor
         self.coreDataInteractor = coreDataInteractor
-        self.sceneCoordinate = sceneCoordinate
+        self.coordinator = coordinator
         
         searchInteractor.didChange$
 //            .debug()
@@ -109,9 +109,6 @@ final class SearchViewModel {
     
     func pushToDetail(indexPath: IndexPath, navigationController: UINavigationController?) {
         let searchItem = totalData$.value[indexPath.row].convertSearchItemViewModel()
-        let coordinator: DetailCoordinator = .init(navigationController: navigationController)
-        let viewModel: DetailViewModel = .init(model: searchItem, coordinator: coordinator)
-        let detailScene: Scene = .detial(viewModel)
-        sceneCoordinate.transition(to: detailScene, type: .push, animated: true)
+        coordinator.showDetail(searchItem, type: .modal)
     }
 }
