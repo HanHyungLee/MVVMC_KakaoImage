@@ -78,6 +78,9 @@ final class SearchViewController: BaseViewController, ViewModelBindableType {
     private func setupUI() {
         self.title = "검색"
         
+        // Setup the mosaic collection view.
+        let mosaicLayout = MosaicLayout()
+        self.collectionView.collectionViewLayout = mosaicLayout
         self.collectionView.delegate = self
         
         self.searchBar.delegate = self

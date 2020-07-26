@@ -15,6 +15,8 @@
 		F109E07A2480031600EEA812 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109E0792480031600EEA812 /* SearchCellViewModel.swift */; };
 		F109E07D248003DF00EEA812 /* SearchItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */; };
 		F109E07E248003DF00EEA812 /* SearchItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */; };
+		F146E41D24CD71ED00A5BE48 /* MosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146E41C24CD71ED00A5BE48 /* MosaicLayout.swift */; };
+		F146E41F24CD776B00A5BE48 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F146E41E24CD776B00A5BE48 /* CGRectExtension.swift */; };
 		F15FE2EA248E6B0F006F9A8D /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE2E9248E6B0F006F9A8D /* FavoriteViewController.swift */; };
 		F15FE2EC248E6BBA006F9A8D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE2EB248E6BBA006F9A8D /* BaseViewController.swift */; };
 		F15FE2EE248E6C6D006F9A8D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE2ED248E6C6D006F9A8D /* FavoriteViewModel.swift */; };
@@ -77,6 +79,8 @@
 		F109E0792480031600EEA812 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
 		F109E07B248003DF00EEA812 /* SearchItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		F109E07C248003DF00EEA812 /* SearchItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		F146E41C24CD71ED00A5BE48 /* MosaicLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicLayout.swift; sourceTree = "<group>"; };
+		F146E41E24CD776B00A5BE48 /* CGRectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		F15FE2E9248E6B0F006F9A8D /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F15FE2EB248E6BBA006F9A8D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F15FE2ED248E6C6D006F9A8D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -183,6 +187,14 @@
 			path = CoreDataStorage;
 			sourceTree = "<group>";
 		};
+		F146E41B24CD71BE00A5BE48 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				F146E41C24CD71ED00A5BE48 /* MosaicLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
 		F1DE620924869BCA00DF1621 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				F1DE620B24869BFF00DF1621 /* ReusableView.swift */,
+				F146E41E24CD776B00A5BE48 /* CGRectExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -281,6 +294,7 @@
 		F1E1A634247C076800347D82 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F146E41B24CD71BE00A5BE48 /* Layouts */,
 				F184296A248401C800E13D93 /* ViewModelBindableType.swift */,
 				F15FE2EB248E6BBA006F9A8D /* BaseViewController.swift */,
 				F1E1A63E247C0BED00347D82 /* SearchViewController.swift */,
@@ -657,10 +671,12 @@
 				F10282DA24A789FD002964F9 /* FavoriteCoordinator.swift in Sources */,
 				F15FE2F2248E70D7006F9A8D /* CoreDataInteractor.swift in Sources */,
 				F18429692483FF9900E13D93 /* Scene.swift in Sources */,
+				F146E41D24CD71ED00A5BE48 /* MosaicLayout.swift in Sources */,
 				F1E1A648247C0FDB00347D82 /* SearchModel.swift in Sources */,
 				F1EA25D124990158008A7A6C /* DetailViewModel.swift in Sources */,
 				F1A8925924B1BAA200825291 /* SearchCoordinator.swift in Sources */,
 				F1EA25CF24990146008A7A6C /* DetailViewController.swift in Sources */,
+				F146E41F24CD776B00A5BE48 /* CGRectExtension.swift in Sources */,
 				F15FE2EE248E6C6D006F9A8D /* FavoriteViewModel.swift in Sources */,
 				F1E1A64D247C1B3000347D82 /* API.swift in Sources */,
 				F184296B248401C800E13D93 /* ViewModelBindableType.swift in Sources */,
