@@ -21,7 +21,7 @@
 
 ## 스크린샷
 
-<img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/blob/master/Screenshots/search-1.png" width="40%"><img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/blob/master/Screenshots/favorite.png" width="40%"><img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/blob/master/Screenshots/detail.png" width="40%">
+<img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/blob/master/Screenshots/search-1.png" width="40%"><img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/blob/master/Screenshots/favorite-1.png" width="40%"><img src="https://github.com/HanHyungLee/MVVMC_KakaoImage/blob/master/Screenshots/detail.png" width="40%">
 
 
 ## 참고
